@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studimmo</title>
+    <link rel="stylesheet" type="text/css" href="template.css"/>
+</head>
+<body>
+
+<header>
+    <h1>Studimmo</h1>
+</header>
+
+<nav>
+    <a href="Accueil.html"><img src="Logo_site_web.png" class="logo"></a>
+    <a href="RechercheLogement.html">Trouver un logement</a>
+    <a href="FAQ.html">FAQ</a>
+    <a href="PublierAnnonce.html">Publier une annonce</a>
+</nav>
+
+<div class="login">
+    <div class="container">
+        <div class="login-container">
+            <h2>Créer un compte</h2>
+            <div>Vous avez déjà un compte ? <a href="Connexion.html">Se connecter</a></div>
+            <form action="/login" method="POST">
+                <div class="input-group">
+                    <label for="username">Votre nom d'utilisateur</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Votre e-mail</label>
+                    <input type="text" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Votre mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Répétez votre mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="input-group">
+                    <button type="submit">S'inscrire</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>© 2024 Site de Logement - Tous droits réservés.</p>
+</footer>
+</body>
+</html>
