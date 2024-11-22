@@ -1,2 +1,2 @@
 # Studimmo
-Housing made simple for students
+Gestion de logement pour étudiants
