@@ -1,0 +1,201 @@
+/* Footer Global */
+footer {
+    background-color: #000; /* Fond noir */
+    color: #fff; /* Texte blanc */
+    padding: 0px 20px 20px 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .top-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo img {
+    max-height: 120px;
+    width: auto;
+    background-color: #e2f1ffdb;
+    border-radius: 30px;
+    margin-top: 20px;
+  }
+  
+  .socials {
+    text-align: left; 
+    
+  }
+  
+  .socials p {
+    margin: 0;
+    font-size: 14px;
+    color: #bbb; /* Couleur du texte gris clair */
+  }
+  
+  .socials .icons {
+    margin-top: 5px;
+  }
+  
+  .socials .icons a {
+    color: #fff;
+    margin-right: 15px;
+    text-decoration: none;
+    font-size: 24px; /* Agrandir les icônes */
+    transition: color 0.3s ease; /* Animation */
+  }
+  
+  .socials .icons a:hover {
+    color: #ccc; /* Changement générique de couleur */
+  }
+  
+  .socials .icons a:hover .fa-youtube {
+    color: #FF0000; /* Couleur rouge pour YouTube */
+  }
+  
+  .socials .icons a:hover .fa-facebook-f {
+    color: #1877F2; /* Couleur bleue pour Facebook */
+  }
+  
+  .socials .icons a:hover .fa-instagram {
+    background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Applique le dégradé au texte */
+  }
+  
+  .socials .icons a:hover .fa-linkedin-in {
+    color: #0077B5; /* Couleur bleue pour LinkedIn */
+  }
+  
+  .socials .icons a:hover .fa-tiktok {
+    background: linear-gradient(100deg, #c6f9fc, #ffffff, #ffb7c5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Applique le dégradé au texte */
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px solid #fff; /* Ligne blanche fine */
+    margin: 20px 0;
+  }
+  
+  /* Bottom Section */
+  .bottom-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Réorganise en petits écrans */
+  }
+  
+  .column {
+    flex: 1;
+    margin: 0 10px;
+    max-width: 200px; /* Réduit l'espacement */
+  }
+  
+  .column h3 {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  
+  .column ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .column ul li {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .column ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .column ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Site Description Section */
+  .site-description {
+    flex: 1;
+    margin: 0 10px;
+    max-width: 203px; /* Réduit l'espacement */
+  }
+  
+  .site-description h3 {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  
+  /* Support and Location Section */
+  .support-location {
+    display: flex;
+    justify-content: center; /* Centrer les deux sections */
+    gap: 50px; /* Espacement entre les deux */
+    margin-top: 20px;
+  }
+  
+  .support, .location {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .support h3, .location h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .support p, .location p, .site-description p {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .support a, .location a {
+    color: #00aced;
+    text-decoration: none;
+  }
+  
+  .support a:hover, .location a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Mentions légales */
+  .legal-links {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 12px;
+    color: #bbb;
+  }
+  
+  .legal-links a {
+    color: #bbb;
+    text-decoration: none;
+  }
+  
+  .legal-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .top-footer {
+      align-items: flex-start;
+    }
+  
+    
+  
+    .bottom-footer {
+      align-items: center;
+    }
+  
+    .support-location {
+      align-items: center;
+    }
+  
+    .support, .location {
+      margin-bottom: 20px;
+    }
+  }
+  
