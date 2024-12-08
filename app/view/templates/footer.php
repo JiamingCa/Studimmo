@@ -3,7 +3,7 @@
     <!-- Top Section -->
     <div class="top-footer">
       <div class="logo">
-        <img src="../asset/image/Logo_studimo.png" alt="Logo">
+        <img src="app/view/asset/image/Logo_studimo.png" alt="Logo">
       </div>
       <div class="socials">
         <p>Retrouvez-nous sur ...</p>
