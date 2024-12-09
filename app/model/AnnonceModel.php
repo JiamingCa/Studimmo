@@ -29,6 +29,24 @@ class AnnonceModel {
         $query->execute(['userId' => $userId]);
         return $query->fetchAll(PDO::FETCH_ASSOC); // Renvoie un tableau associatif
     }
+    public function getCandidaturesParStatut($userId) {
+        $query = $this->pdo->prepare("SELECT a.id_annonce, a.titre, c.statut, COUNT(c.id_candidature) AS total
+                                      FROM annonce a
+                                      LEFT JOIN candidature c ON a.id_annonce = c.annonce_id
+                                      WHERE a.utilisateur_id = :userId
+                                      GROUP BY a.id_annonce, c.statut");
+        $query->execute(['userId' => $userId]);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getFavorisParAnnonce($userId) {
+        $query = $this->pdo->prepare("SELECT a.id_annonce, a.titre, COUNT(f.id_favoris) AS total
+                                      FROM annonce a
+                                      LEFT JOIN favoris f ON a.id_annonce = f.annonce_id
+                                      WHERE a.utilisateur_id = :userId
+                                      GROUP BY a.id_annonce");
+        $query->execute(['userId' => $userId]);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 ?>

@@ -1,17 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Vérifier si Chart.js est chargé
     if (typeof Chart === "undefined") {
         console.error("Chart.js n'est pas chargé.");
         return;
     }
 
-    // Plugin personnalisé pour ajouter un titre et un sous-titre
-    Chart.register({
-        id: 'customSubtitle',
+    // Plugin local pour ajouter "Vues" et "Par mois"
+    const vuesSubtitlePlugin = {
+        id: 'vuesSubtitle',
         beforeDraw(chart) {
             const { ctx } = chart;
-            const titleFont = "bold 16px Arial"; // Style pour "Vues"
-            const subtitleFont = "12px Arial"; // Style pour "Par mois"
+            const titleFont = "bold 16px Arial";
+            const subtitleFont = "12px Arial";
 
             ctx.save();
             ctx.font = titleFont;
@@ -24,13 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.fillText('Par mois', chart.chartArea.left, chart.chartArea.top - 5);
             ctx.restore();
         }
-    });
+    };
 
-    // Boucler sur les données
     Object.entries(vuesData).forEach(([idAnnonce, data]) => {
         const ctx = document.getElementById(`chart-${idAnnonce}`).getContext('2d');
-        
-        // Trouver le mois avec le maximum de vues
+
         const maxVues = Math.max(...Object.values(data.vues));
         const maxIndex = Object.values(data.vues).indexOf(maxVues);
 
@@ -40,22 +37,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 labels: ['Janv', 'Févr', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'],
                 datasets: [{
                     data: Object.values(data.vues),
-                    backgroundColor: 'rgba(123, 97, 255, 0.8)', // Couleur des barres
-                    borderRadius: 5, // Arrondi des coins
-                    borderSkipped: false // Supprime les coins carrés
+                    backgroundColor: 'rgba(123, 97, 255, 0.8)',
+                    borderRadius: 5,
+                    borderSkipped: false
                 }]
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false, // Permet de redimensionner librement le graphique
+                maintainAspectRatio: false,
                 layout: {
                     padding: {
-                        top: 30 // Augmente l'espace au-dessus du graphique
+                        top: 30
                     }
                 },
                 plugins: {
                     legend: {
-                        display: false // Supprime la légende
+                        display: false
                     },
                     datalabels: {
                         anchor: 'end',
@@ -66,50 +63,48 @@ document.addEventListener("DOMContentLoaded", () => {
                             size: 14
                         },
                         formatter: function(value, context) {
-                            // Afficher le chiffre uniquement pour la barre avec la valeur maximale
                             return context.dataIndex === maxIndex ? value : '';
                         }
                     },
                     tooltip: {
                         callbacks: {
                             label: function(tooltipItem) {
-                                return `${tooltipItem.raw} vues`; // Infobulle : "X vues"
+                                return `${tooltipItem.raw} vues`;
                             }
                         },
-                        displayColors: false, // Supprimer les couleurs dans l'infobulle
-                        backgroundColor: '#000', // Fond noir pour l'infobulle
-                        titleColor: '#fff', // Couleur du titre de l'infobulle
-                        bodyColor: '#fff', // Couleur du texte de l'infobulle
-                        caretSize: 5, // Taille de la petite flèche de l'infobulle
-                        yAlign: 'top', // Affiche l'infobulle au bas de la barre
+                        displayColors: false,
+                        backgroundColor: '#000',
+                        titleColor: '#fff',
+                        bodyColor: '#fff',
+                        caretSize: 5,
+                        yAlign: 'top',
                     }
                 },
                 scales: {
                     y: {
-                        display: false // Supprimer l'axe des ordonnées
+                        display: false
                     },
                     x: {
                         ticks: {
-                            color: '#666' // Couleur des mois
+                            color: '#666'
                         },
                         grid: {
-                            display: false // Supprimer la grille verticale
+                            display: false
                         }
                     }
                 },
                 animation: {
-                    duration: 800, // Durée de l'animation
-                    easing: 'easeOutQuint' // Animation fluide
+                    duration: 800,
+                    easing: 'easeOutQuint'
                 }
             },
-            plugins: [ChartDataLabels] // Activer ChartDataLabels pour afficher le chiffre
+            plugins: [ChartDataLabels, vuesSubtitlePlugin]
         });
     });
-    // Étape 4 : Réinitialiser les styles injectés par Chart.js
+
     const allCanvases = document.querySelectorAll("canvas");
     allCanvases.forEach((canvas) => {
-        canvas.style.width = ""; // Réinitialise le style inline de largeur
-        canvas.style.height = ""; // Réinitialise le style inline de hauteur
+        canvas.style.width = "";
+        canvas.style.height = "";
     });
 });
-

@@ -56,10 +56,10 @@
 /* Logement Styles */
 .logement {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
-    padding: 20px;
+    padding: 20px 20px 0px 20px;
     background-color: white;
     border: 1px solid #ddd;
     overflow: hidden;
@@ -199,6 +199,12 @@ button {
     background-color: orange;
 }
 
+.vertical-bar {
+    width: 1px;
+    background-color: #bbb9b9;
+    margin: 0px 0px 10px 0px;
+}
+
 /* Logement Right Section */
 .logement-right {
     flex: auto;
@@ -261,7 +267,8 @@ button {
 
 .stats {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 30px;
     flex: 1;
 }
 

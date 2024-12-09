@@ -78,13 +78,15 @@
                             </div>
                         </div>
 
+                        <div class="vertical-bar"></div>
+                        
                         <div class="logement-right">
                             <div class="logement-right-top">
                                 <div>
                                     <canvas id="chart-<?= $annonce['id_annonce'] ?>" width="325" height="150" display="false"></canvas>
                                 </div>
                                 <div>
-                                    <div class="chart">Graphique des candidatures</div>
+                                    <canvas id="candidature-chart-<?= $annonce['id_annonce'] ?>" width="150" height="150"></canvas>
                                 </div>
                                 <div class="actions">
                                     <button class="modify-btn">Modifier</button>
@@ -94,13 +96,19 @@
                             <div class="logement-right-bottom">
                                 <div class="stats">
                                     <div class="stat">
-                                        <i class="fa fa-eye"></i> 100 vues
+                                        <i class="fa fa-eye"></i> 
+                                        <?= isset($vuesStructurees[$annonce['id_annonce']]['total']) 
+                                            ? $vuesStructurees[$annonce['id_annonce']]['total'] 
+                                            : 0 ?> vues
                                     </div>
                                     <div class="stat">
-                                        <i class="fa fa-paper-plane"></i> 5 candidatures
+                                        <i class="fa fa-paper-plane"></i> 
+                                        <?= isset($candidaturesStructurees[$annonce['id_annonce']]['total']) 
+                                            ? $candidaturesStructurees[$annonce['id_annonce']]['total'] 
+                                            : 0 ?> candidatures
                                     </div>
                                     <div class="stat">
-                                        <i class="fa fa-heart"></i> 3 favoris
+                                        <i class="fa fa-heart"></i> <?= $favorisStructurees[$annonce['id_annonce']] ?? 0 ?> favoris
                                     </div>
                                 </div>
                             </div>
@@ -114,12 +122,14 @@
     </div>
     <?php include 'app/view/templates/footer.php'; ?>
     <!-- Inclure le fichier JS -->
-    <script src="app/view/asset/js/tb_bord.js"></script>
+    <script src="app/view/asset/js/graphvues.js"></script>
+    <script src="app/view/asset/js/graphcandidature.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script>
         // Passer les données PHP vers le fichier JavaScript
         const vuesData = <?= json_encode($vuesStructurees) ?>;
+        const candidatureData = <?= json_encode($candidaturesStructurees); ?>;
     </script>
 </body>
 </html>
