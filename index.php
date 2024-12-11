@@ -41,7 +41,7 @@ switch ($page) {
     
     case 'profils':
         require_once 'app/controllers/ProfilsController.php';
-        $controller = new DashboardController($pdo);
+        $controller = new ProfilsController($pdo);
         $controller->afficherProfils($userId);
         break;
 

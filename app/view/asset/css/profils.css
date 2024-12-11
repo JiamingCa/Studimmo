@@ -1,0 +1,34 @@
+.titre {
+    
+    background: linear-gradient(0deg, #9CABDD 0%, #AFC1FF 67%);
+    padding: 0px 20px 10px 20px;
+}
+
+.titre t1 {
+    color: white;
+    margin-left: calc(17%);
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff; /* Couleur bleue standard */
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px; /* Espacement à droite */
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.back-button i {
+    margin-right: 5px; /* Espacement entre l'icône et le texte */
+    font-size: 20px;
+}
+
+.back-button:hover {
+    color: #797979; /* Couleur plus foncée au survol */
+    transform: scale(1.05); /* Légère mise en évidence */
+}

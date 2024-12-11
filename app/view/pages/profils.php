@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil - Gestion Logement Étudiant</title>
-    <link rel="stylesheet" href="../asset/css/profils.css">
-    <link rel="stylesheet" href="../asset/css/footer.css">
-    <link rel="stylesheet" href="../asset/css/header.css">
+    <link rel="stylesheet" href="app/view/asset/css/profils.css">
+    <link rel="stylesheet" href="app/view/asset/css/footer.css">
+    <link rel="stylesheet" href="app/view/asset/css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <?php include '../templates/header.php'; ?>
+    <?php include 'app/view/templates/header.php'; ?>
     <div class="titre">
+        <a href='index.php?page=mon_espace' class="back-button">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <t1>Mon profils</t1>
+    </div>
     <header>
+
         <div class="container">
             <h1>Gestion Logement Étudiant</h1>
             <nav>
@@ -55,7 +63,7 @@
                 </div>
             </section>
         </div>
-        <?php include '../templates/footer.php'; ?>
+        <?php include 'app/view/templates/footer.php'; ?>
     </main>
 </body>
 </html>
