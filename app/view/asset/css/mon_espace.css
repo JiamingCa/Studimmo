@@ -1,0 +1,88 @@
+/* Conteneur principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Titre */
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.titre {
+    
+    background: linear-gradient(0deg, #9CABDD 0%, #AFC1FF 67%);
+    padding: 0px 20px 10px 20px;
+}
+
+.titre t1 {
+    color: white;
+    margin-left: calc(17%);
+    font-size: 25px;
+    font-weight: bold;
+
+}
+
+/* Grille */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Carte */
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+    font-size: 40px;
+    color: #8c97bb;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Bouton Déconnexion */
+.logout {
+    margin-top: 30px;
+}
+
+.logout a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #f13636;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+.logout a:hover {
+    background: #d43e26;
+}
