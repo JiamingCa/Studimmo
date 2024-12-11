@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="app/view/asset/css/tb_bord.css">
     <link rel="stylesheet" href="app/view/asset/css/footer.css">
     <link rel="stylesheet" href="app/view/asset/css/header.css">
+    <link rel="stylesheet" href="app/view/asset/css/template.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
 </head>
