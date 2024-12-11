@@ -1,5 +1,4 @@
 .titre {
-    
     background: linear-gradient(0deg, #9CABDD 0%, #AFC1FF 67%);
     padding: 0px 20px 10px 20px;
 }
@@ -34,13 +33,15 @@
 }
 
 .profile-item {
-    margin-bottom: 15px;
+    margin: 20px; /* Ajoute une marge de 20px tout autour */
+    padding: 15px; /* Facultatif : Ajoute de l'espace à l'intérieur du bloc */
+    border: 1px solid #555555;
 }
 
 .profile-item label {
     display: block;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     color: #555555;
 }
 
@@ -56,7 +57,7 @@
 .edit-button {
     display: inline-block;
     margin-top: 10px;
-    background-color: #007bff;
+    background-color: #AFC1FF;
     color: #ffffff;
     padding: 10px 20px;
     border: none;
@@ -67,5 +68,5 @@
 }
 
 .edit-button:hover {
-    background-color: #0056b3;
+    background-color: #AFC1FF;
 }

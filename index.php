@@ -5,8 +5,6 @@ session_start();
 // Inclure les fichiers de configuration et les dépendances
 require_once 'config/connexion.php';
 
-
-
 // Simulation d'un utilisateur connecté (utilisateur avec id = 1)
 if (!isset($_SESSION['user_id'])) {
     $_SESSION['user_id'] = 1; // Remplacez "1" par l'id réel d'un utilisateur dans votre base de données
