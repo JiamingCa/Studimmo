@@ -57,19 +57,52 @@ body {
 
 .annonce-image {
     position: relative;
-    width: 150px;
-    height: 150px;
+    width: 289px;
     flex-shrink: 0;
 }
 
 .annonce-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-height: 190px; 
+    width: auto;
+    display: block;
+    margin: 0 auto; 
+    object-fit: contain; 
+    background-color: #f0f0f0; 
+}
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.supprimer-favori {
-    position: absolute;
+.arrow-left {
+    left: 10px;
+}
+
+.arrow-right {
+    right: 10px;
+}
+
+.annonce-image:hover .arrow {
+    opacity: 1;
+}
+
+
+
+.favori-toggle {
+    position: relative;
     top: 10px;
     right: 10px;
     background: rgba(255, 255, 255, 0.8);
@@ -78,11 +111,12 @@ body {
     padding: 5px;
     cursor: pointer;
     transition: background 0.3s ease;
+    align-self: self-start;
 }
 
-.supprimer-favori:hover {
-    background: rgba(255, 0, 0, 0.8);
-    color: white;
+
+.favori-toggle i {
+    font-size: 20px;
 }
 
 .annonce-details {
@@ -114,4 +148,27 @@ body {
 
 .btn-contacter:hover {
     background-color: #0056b3;
+}
+
+@media (max-width: 800px) {
+    /* Votre media query existante */
+    .annonce-image {
+        width: 200px;
+    }
+
+    .header-favoris h1 {
+        font-size: 16px;
+    }
+    
+    .annonce-image img {
+        width: 200px;
+        height: 232px;
+        margin: none;
+        object-fit: cover;
+        max-height: none;
+    }
+    
+    
+    
+    
 }
