@@ -20,23 +20,23 @@
         <h1 class="title">Bienvenue</h1>
         <div class="grid">
             <!-- Carte Favoris -->
-            <div class="card">
+            <div class="card" onclick="location.href='index.php?page=favoris';">
                 <i class="fas fa-heart icon"></i>
                 <h2>Favoris</h2>
                 <p>Retrouver vos biens enregistrés</p>
             </div>
 
             <!-- Carte Mes alertes -->
-            <div class="card">
+            <div class="card" onclick="location.href='index.php?page=alerte';">
                 <i class="fas fa-bell icon"></i>
                 <h2>Mes alertes</h2>
                 <p>Gérer vos recherches sauvegardées</p>
             </div>
 
             <!-- Carte Mon profil -->
-            <div class="card">
+            <div class="card" onclick="location.href='index.php?page=candidature';">
                 <i class="fas fa-folder icon"></i>
-                <h2>Mon Dossier</h2>
+                <h2>Candidature</h2>
                 <p>Compléter votre profil</p>
             </div>
 
@@ -48,14 +48,14 @@
             </div>
 
             <!-- Carte Compte -->
-            <div class="card">
+            <div class="card" onclick="location.href='index.php?page=compte';">
                 <i class="fas fa-user icon"></i>
                 <h2>Compte</h2>
                 <p>Données personnelles et plus</p>
             </div>
 
             <!-- Carte Aide -->
-            <div class="card">
+            <div class="card" onclick="location.href='index.php?page=aide';">
                 <i class="fas fa-question-circle icon"></i>
                 <h2>Aide</h2>
                 <p>Support et assistance</p>

@@ -26,6 +26,12 @@ switch ($page) {
         $controller = new MonEspaceController($pdo);
         $controller->afficherMonEspace($userId);
         break;
+
+    case 'favoris':
+        require_once 'app/controllers/FavorisController.php';
+        $controller = new FavorisController($pdo);
+        $controller->afficherFavoris($userId);
+        break;
     
     case 'tb_bord':
         require_once 'app/controllers/DashboardController.php';
