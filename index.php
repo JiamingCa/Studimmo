@@ -38,6 +38,12 @@ switch ($page) {
         $controller = new DashboardController($pdo);
         $controller->afficherTableauDeBord($userId);
         break;
+    
+    case 'profils':
+        require_once 'app/controllers/ProfilsController.php';
+        $controller = new DashboardController($pdo);
+        $controller->afficherProfils($userId);
+        break;
 
     // ... autres routes comme accueil, tableau_de_bord, login, etc.
 

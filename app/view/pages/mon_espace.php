@@ -33,7 +33,7 @@
                 <p>Gérer vos recherches sauvegardées</p>
             </div>
 
-            <!-- Carte Mon profil -->
+            <!-- Carte Mes candidatures -->
             <div class="card" onclick="location.href='index.php?page=candidature';">
                 <i class="fas fa-folder icon"></i>
                 <h2>Candidature</h2>
@@ -47,8 +47,8 @@
                 <p>Annonces déposées et contacts</p>
             </div>
 
-            <!-- Carte Compte -->
-            <div class="card" onclick="location.href='index.php?page=compte';">
+            <!-- Carte Profils -->
+            <div class="card" onclick="location.href='index.php?page=profils';">
                 <i class="fas fa-user icon"></i>
                 <h2>Compte</h2>
                 <p>Données personnelles et plus</p>
