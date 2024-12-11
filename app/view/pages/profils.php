@@ -16,27 +16,32 @@
         <a href='index.php?page=mon_espace' class="back-button">
             <i class="fas fa-arrow-left"></i>
         </a>
-        <t1>Mon profils</t1>
+        <t1>Mon profil</t1>
     </div>
-    <header>
 
-        <div class="container">
-            <h1>Gestion Logement Étudiant</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Accueil</a></li>
-                    <li><a href="profil.php">Mon Profil</a></li>
-                    <li><a href="logout.php">Déconnexion</a></li>
-                </ul>
-            </nav>
+<main>
+
+    <div class="profile-item">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" value="Dupont" disabled>
         </div>
-    </header>
-    
+        <div class="profile-item">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" value="Jean" disabled>
+        </div>
+        <div class="profile-item">
+            <label for="email">Email</label>
+            <input type="email" id="email" value="jean.dupont@example.com" disabled>
+        </div>
+        <button class="edit-button" onclick="toggleEdit()">Modifier</button>
+    </div>
+
+    <!--
     <main>
         <div class="container">
             <section class="profil">
                 <h2>Mon Profil</h2>
-                <div class="profil-info">
+                    <div class="profil-info">
                     <img src="images/profil.jpg" alt="Photo de profil" class="profil-photo">
                     <div class="details">
                         <p><strong>Nom :</strong> Étudiant Nom</p>
@@ -46,25 +51,9 @@
                     </div>
                 </div>
             </section>
-            
-            <section class="logements">
-                <h2>Mes Logements</h2>
-                <div class="logement-card">
-                    <h3>Appartement 1</h3>
-                    <p><strong>Adresse :</strong> 45 Rue des Étudiants</p>
-                    <p><strong>Prix :</strong> 500€/mois</p>
-                    <p><strong>Description :</strong> Studio meublé, proche université.</p>
-                </div>
-                <div class="logement-card">
-                    <h3>Appartement 2</h3>
-                    <p><strong>Adresse :</strong> 12 Avenue du Campus</p>
-                    <p><strong>Prix :</strong> 450€/mois</p>
-                    <p><strong>Description :</strong> Studio calme, bien desservi.</p>
-                </div>
-            </section>
-        </div>
+        </div> -->
         <?php include 'app/view/templates/footer.php'; ?>
-    </main>
+    </main> 
 </body>
 </html>
 

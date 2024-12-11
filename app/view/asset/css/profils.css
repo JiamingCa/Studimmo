@@ -32,3 +32,40 @@
     color: #797979; /* Couleur plus foncée au survol */
     transform: scale(1.05); /* Légère mise en évidence */
 }
+
+.profile-item {
+    margin-bottom: 15px;
+}
+
+.profile-item label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555555;
+}
+
+.profile-item input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.edit-button {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
