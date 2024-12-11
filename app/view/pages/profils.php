@@ -21,36 +21,57 @@
 
 <main>
 
-    <div class="profile">
+    <div class="profile-container">
+
+    <div class="profile-title">Données personnelles</div>
+
+    <div class="profile-grid">
+    <div class="profile-item">
             <label for="prenom">Prénom</label>
             <input type="text" id="prenom"> <br><br>
         </div>
 
-    <div class="profile">
+    <div class="profile-item">
             <label for="nom">Nom</label>
             <input type="text" id="nom"> <br><br>
         </div>
 
-    <div class="profile">
+    <div class="profile-item">
+        <label for="date_de_naissance">Date de naissance</label>
+        <input type="date" id="date_de_naissance"> <br><br>
+        </div>
+
+    <div class="profile-item">
             <label for="tel">Numéro de téléphone</label>
             <input type="tel" id="tel"> <br><br>
         </div> 
 
-    <div class="profile">
+    <div class="profile-item">
             <label for="email">Email</label>
             <input type="email" id="email"> <br><br>
         </div>
     
-    <div class="profile">
+    <button class="edit-button" onclick="toggleEdit()">Modifier</button>
+    </div>
+    </div>
+    
+
+    <div class="profile-container">
+
+    <div class="profile-grid">
+    <div class="profile-title">Sécurité</div>
+
+    <div class="profile-item">
             <label for="mdp">Mot de passe</label>
             <input type="mdp" id="mdp"> <br><br>
         </div>
-
         <button class="edit-button" onclick="toggleEdit()">Modifier</button>
     </div>
+    </div>
+    </div>
 
+    
     <?php include 'app/view/templates/footer.php'; ?>
-
 </main> 
 </body>
 </html>
