@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9fbff;
+}
+
+.favoris-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.header-favoris {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-favoris h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.tri-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tri-options select {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.liste-favoris {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.annonce {
+    display: flex;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.annonce:hover {
+    transform: translateY(-5px);
+}
+
+.annonce-image {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+}
+
+.annonce-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.supprimer-favori {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.supprimer-favori:hover {
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+}
+
+.annonce-details {
+    padding: 20px;
+    flex: 1;
+}
+
+.annonce-details h3 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.annonce-details p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.btn-contacter {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-contacter:hover {
+    background-color: #0056b3;
+}
