@@ -86,3 +86,10 @@
 .logout a:hover {
     background: #d43e26;
 }
+
+
+@media (max-width: 800px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(211px, 1fr));
+    }
+}

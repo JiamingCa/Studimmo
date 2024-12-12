@@ -7,22 +7,20 @@
     <link rel="stylesheet" href="app/view/asset/css/tb_bord.css">
     <link rel="stylesheet" href="app/view/asset/css/footer.css">
     <link rel="stylesheet" href="app/view/asset/css/header.css">
+    <link rel="stylesheet" href="app/view/asset/css/template.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
 </head>
 <body>
     <?php include 'app/view/templates/header.php'; ?>
     <div class="titre">
+        <a href='index.php?page=mon_espace' class="back-button">
+            <i class="fas fa-arrow-left"></i>
+        </a>
         <t1>Mes Annonces</t1>
     </div>
     <div class="tb_bord">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="nav-item active" id="dashboard-nav">Tableau de bord</div>
-            <div class="nav-item" id="candidature-nav">Candidatures</div>
-            <div class="nav-item" id="mon-compte-nav">Mon Compte</div>
-            <div class="nav-item" id="aide-nav">Aide</div>
-        </div>
+        
 
         <!-- Content -->
         <div class="content">
@@ -82,11 +80,13 @@
                         
                         <div class="logement-right">
                             <div class="logement-right-top">
-                                <div>
-                                    <canvas id="chart-<?= $annonce['id_annonce'] ?>" width="325" height="150" display="false"></canvas>
-                                </div>
-                                <div>
-                                    <canvas id="candidature-chart-<?= $annonce['id_annonce'] ?>" width="150" height="150"></canvas>
+                                <div class="afficheur-graph">
+                                    <div class="graph-1">
+                                        <canvas  id="chart-<?= $annonce['id_annonce'] ?>" width="325" height="150" display="false"></canvas>
+                                    </div>
+                                    <div class="graph-2">
+                                        <canvas id="candidature-chart-<?= $annonce['id_annonce'] ?>" width="150" height="150" display="false"></canvas>
+                                    </div>
                                 </div>
                                 <div class="actions">
                                     <button class="modify-btn">Modifier</button>
@@ -110,6 +110,9 @@
                                     <div class="stat">
                                         <i class="fa fa-heart"></i> <?= $favorisStructurees[$annonce['id_annonce']] ?? 0 ?> favoris
                                     </div>
+                                    <button class="toggle-graphs-btn" aria-expanded="false">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -123,6 +126,7 @@
     <?php include 'app/view/templates/footer.php'; ?>
     <!-- Inclure le fichier JS -->
     <script src="app/view/asset/js/graphvues.js"></script>
+    <script src="app/view/asset/js/tb_bord.js"></script>
     <script src="app/view/asset/js/graphcandidature.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
