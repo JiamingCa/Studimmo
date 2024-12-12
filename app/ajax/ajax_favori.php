@@ -1,7 +1,7 @@
 <?php
 // Inclure les fichiers nécessaires
-require_once 'config/connexion.php';
-require_once 'app/model/FavorisModel.php';
+require_once '../../config/connexion.php';
+require_once '../model/FavorisModel.php';
 
 // Vérifier si l'utilisateur est connecté
 session_start();

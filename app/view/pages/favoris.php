@@ -74,7 +74,7 @@
                 const isActive = button.dataset.active === "true";
 
                 // Envoie une requête POST à ajax_favori.php
-                fetch('ajax_favori.php', {
+                fetch('app/ajax/ajax_favori.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ idAnnonce: annonceId, action: isActive ? 'remove' : 'add' })
@@ -108,7 +108,7 @@
             const valeurTri = this.value;
 
             // Envoie une requête AJAX pour récupérer les annonces triées
-            fetch(`ajax_tri.php?tri=${valeurTri}`)
+            fetch(`app/ajax/ajax_tri.php?tri=${valeurTri}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
