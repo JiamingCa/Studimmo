@@ -17,60 +17,84 @@ class Creer_dossierController {
         if (!is_dir($uploadDirectory)) {
             mkdir($uploadDirectory, 0755, true);
         }
-    
-        // Dossier pour stocker le premier fichier
-        $premierFichierDirectory = $uploadDirectory . "premier_fichier/";
-        if (!is_dir($premierFichierDirectory)) {
-            mkdir($premierFichierDirectory, 0755, true);
+
+        // Dossier pour stocker les PDF finaux
+        $pdfDirectory = $uploadDirectory . "pdf/";
+        if (!is_dir($pdfDirectory)) {
+            mkdir($pdfDirectory, 0755, true);
         }
-    
-        // Afficher un message de débogage
-        echo "Dossier premier_fichier créé à : " . $premierFichierDirectory . "<br>";
-    
-        // Parcourez les sections pour traiter les fichiers
+
+        // Fonction pour créer un PDF unique par section
+        function createPdfForSection($sectionName, $sectionDirectory, $pdfDirectory) {
+            $pdf = new FPDI();
+
+            // Récupérer tous les fichiers dans le sous-dossier de la section
+            $files = glob($sectionDirectory . "*");
+
+            foreach ($files as $filePath) {
+                $extension = pathinfo($filePath, PATHINFO_EXTENSION);
+
+                if (in_array(strtolower($extension), ['jpg', 'png'])) {
+                    // Ajouter une image dans le PDF
+                    $pdf->AddPage();
+                    $pdf->Image($filePath, 10, 10, 190); // Ajuster les dimensions si nécessaire
+                } elseif (strtolower($extension) === 'pdf') {
+                    // Importer un fichier PDF existant
+                    $pageCount = $pdf->setSourceFile($filePath);
+                    for ($i = 1; $i <= $pageCount; $i++) {
+                        $tplId = $pdf->importPage($i);
+                        $pdf->AddPage();
+                        $pdf->useTemplate($tplId, 10, 10, 190);
+                    }
+                }
+            }
+
+            // Sauvegarder le PDF final
+            $outputPath = $pdfDirectory . $sectionName . ".pdf";
+            $pdf->Output('F', $outputPath);
+
+            return $outputPath;
+        }
+
+        // Parcourez chaque section et gérez les fichiers
         $sections = [
             'identite' => $_FILES['file_identite'],
             'scolarite' => $_FILES['file_scolarite'],
             'rib_locataire' => $_FILES['file_rib_locataire']
         ];
-    
+
         foreach ($sections as $sectionName => $fileArray) {
+            // Créer un sous-dossier pour chaque section
+            $sectionDirectory = $uploadDirectory . $sectionName . "/";
+            if (!is_dir($sectionDirectory)) {
+                mkdir($sectionDirectory, 0755, true);
+            }
+
             // Vérifiez si des fichiers ont été uploadés pour cette section
             if (isset($fileArray['name']) && is_array($fileArray['name'])) {
-                // Afficher le contenu de $fileArray pour débogage
-                var_dump($fileArray); 
                 for ($i = 0; $i < count($fileArray['name']); $i++) {
                     $tmpFilePath = $fileArray['tmp_name'][$i];
                     $fileName = $fileArray['name'][$i];
-                    $destination = $uploadDirectory . $sectionName . "/" . basename($fileName);
-    
+                    $destination = $sectionDirectory . basename($fileName);
+
                     // Déplacez le fichier temporaire dans le dossier de la section
-                    echo "Déplacement du fichier : $tmpFilePath vers $destination<br>";
                     if (move_uploaded_file($tmpFilePath, $destination)) {
-                        echo "Fichier déplacé dans la section $sectionName : $destination<br>";
-                        
-                        // Déplacez le premier fichier dans le dossier 'premier_fichier'
-                        if ($i == 0) {  // Assurez-vous que c'est le premier fichier
-                            $firstFileDestination = $premierFichierDirectory . basename($fileName);
-                            echo "Déplacement du premier fichier vers : $firstFileDestination<br>";
-                            if (move_uploaded_file($tmpFilePath, $firstFileDestination)) {
-                                echo "Premier fichier déplacé dans premier_fichier : $firstFileDestination<br>";
-                            } else {
-                                echo "Échec du déplacement du premier fichier : $fileName<br>";
-                            }
-                        }
+                        echo "Fichier déplacé : $destination<br>";
                     } else {
                         echo "Échec du déplacement du fichier : $fileName<br>";
                     }
                 }
+
+                // Générer un PDF avec tous les fichiers de la section
+                $pdfPath = createPdfForSection($sectionName, $sectionDirectory, $pdfDirectory);
+                echo "PDF pour la section $sectionName créé : $pdfPath<br>";
             } else {
                 echo "Aucun fichier pour la section $sectionName.<br>";
             }
         }
-    
+
         // Redirection vers une page de confirmation
         header("Location: ?page=confirmation");
         exit;
     }
-    
 }
