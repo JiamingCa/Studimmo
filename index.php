@@ -7,7 +7,7 @@ require_once 'config/connexion.php';
 
 // Simulation d'un utilisateur connecté (utilisateur avec id = 1)
 if (!isset($_SESSION['user_id'])) {
-    $_SESSION['user_id'] = 1; // Remplacez "1" par l'id réel d'un utilisateur dans votre base de données
+    $_SESSION['user_id'] = 4; // Remplacez "1" par l'id réel d'un utilisateur dans votre base de données
 }
 // Récupération de l'id de l'utilisateur connecté
 $userId = $_SESSION['user_id'];
@@ -42,7 +42,17 @@ switch ($page) {
     case 'profils':
         require_once 'app/controllers/ProfilsController.php';
         $controller = new ProfilsController($pdo);
-        $controller->afficherProfils($userId);
+
+        // Vérifiez si une action spécifique est demandée
+        $action = isset($_GET['action']) ? $_GET['action'] : 'afficher';
+
+        if ($action === 'modifier') {
+            // Si l'action est "modifier", appelez la méthode de modification
+            $controller->modifierProfils($userId);
+        } else {
+            // Sinon, affichez simplement la page de profil
+            $controller->afficherProfils($userId);
+        }
         break;
         
 

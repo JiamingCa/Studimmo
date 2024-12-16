@@ -20,59 +20,60 @@
     </div>
 
 <main>
-
     <div class="profile-container">
 
+    <form action="index.php?page=profils&action=modifier" method="POST">
     <div class="profile-title">Données personnelles</div>
 
     <div class="profile-grid">
     <div class="profile-item">
             <label for="prenom">Prénom</label>
-            <input type="text" id="prenom",value="<?php echo $prenom; ?>"> <br><br>
+            <input type="text" id="prenom" name="prenom" value="<?php echo htmlspecialchars($utilisateur['prenom']); ?>"> <br><br>
         </div>
 
     <div class="profile-item">
             <label for="nom">Nom</label>
-            <input type="text" id="nom", value="<?php echo $nom; ?>"> <br><br>
+            <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($utilisateur['nom']); ?>"> <br><br>
         </div>
 
     <div class="profile-item">
         <label for="type">Type</label>
-        <input type="text" id="type", value="<?php echo $type; ?>"> <br><br>
+        <input type="text" id="type" name="type" value="<?php echo htmlspecialchars($utilisateur['type']); ?>"> <br><br>
         </div>
 
     <div class="profile-item">
             <label for="telephone">Numéro de téléphone</label>
-            <input type="tel" id="tel"value="<?php echo $telephone; ?>"> <br><br>
-        </div> 
+            <input type="tel" id="tel" name="telephone" value="<?php echo htmlspecialchars($utilisateur['telephone']); ?>"> <br><br>
+        </div>
 
     <div class="profile-item">
             <label for="email">Email</label>
-            <input type="email" id="email", value="<?php echo $email; ?>"> <br><br>
+            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($utilisateur['email']); ?>"> <br><br>
         </div>
-    
-    <button class="edit-button" onclick="toggleEdit()">Modifier</button>
+            
+
+    <button type="submit" class="edit-button">Enregistrer</button>
+    </form>
     </div>
     </div>
-    
 
     <div class="profile-container">
-
     <div class="profile-grid">
     <div class="profile-title">Sécurité</div>
-
     <div class="profile-item">
             <label for="mot_de_passe">Mot de passe</label>
-            <input type="text" id="mot_de_passe", value="<?php echo $mot_de_passe; ?>"> <br><br>
-        </div>
-        <button class="edit-button" onclick="toggleEdit()">Modifier</button>
+            <!-- MET PASSWORD AU LIEU DE TEXT -->                                                          <!-- DISABLED SERT A NE PAS POUVOIR INTERAGIR -->
+            <input type="text" id="mot_de_passe" value="<?php echo htmlspecialchars($utilisateur['mot_de_passe']); ?>" disabled> <br><br>
+        </div>          <!-- DISABLED SERT A NE PAS POUVOIR INTERAGIR -->
+        <button class="edit-button" disabled>Modifier le mot de passe</button>
     </div>
     </div>
     </div>
 
-    
+
     <?php include 'app/view/templates/footer.php'; ?>
-</main> 
+    
+
+</main>   
 </body>
 </html>
-

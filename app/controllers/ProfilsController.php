@@ -11,28 +11,29 @@ class ProfilsController {
 
     public function afficherProfils($userId) {
         // Récupérer les informations de l'utilisateur depuis la base de données
-        $query = "SELECT nom, prenom, email, mot_de_passe, telephone, type FROM utilisateur WHERE id_Utilisateur = :userId";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
-        $stmt->execute();
+        $utilisateur = selectUsers($this->pdo, $userId)->fetch();
 
-        // Vérifier si un utilisateur a été trouvé
-        $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
-        if (!$utilisateur) {
-            echo "Utilisateur introuvable.";
-            return;
-        }
-
-        // Extraire les informations pour les passer à la vue
-        $nom = $utilisateur['nom'];
-        $prenom = $utilisateur['prenom'];
-        $email = $utilisateur['email'];
-        $mot_de_passe = $utilisateur['mot_de_passe'];
-        $telephone = $utilisateur['telephone'];
-        $type = $utilisateur['type'];
-
-        // Inclure la vue du profil
+        // Inclure la vue du profil avec les données utilisateur
         require 'app/view/pages/profils.php';
+    }
+
+    public function modifierProfils($userId) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Récupérer les données envoyées via le formulaire
+            $nom = $_POST['nom'] ?? '';
+            $prenom = $_POST['prenom'] ?? '';
+            $email = $_POST['email'] ?? '';
+            $telephone = $_POST['telephone'] ?? '';
+            $mot_de_passe = $_POST['mot_de_passe'] ?? '';
+
+
+            // Mettre à jour les informations dans la base de données
+            updateUsers($this->pdo, $nom, $prenom, $email, $telephone, $userId);
+
+            // Rediriger vers la page de profil pour refléter les modifications
+            header('Location: index.php?page=profils');
+            exit;
+        }
     }
 }
 ?>
