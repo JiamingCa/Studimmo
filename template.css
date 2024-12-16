@@ -87,7 +87,7 @@ footer {
 
 .login-container {
     background-color: white;
-    padding: 20px;
+    padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 300px;
@@ -132,6 +132,68 @@ footer {
     background-color: #4c84af;
 }
 
+.inscription-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    margin: 100px auto; /* Pour centrer le bloc */
+}
+
+.inscription-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.inscription-container .input-group {
+    margin-bottom: 15px;
+}
+
+.inscription-container .input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.inscription-container .input-group input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.inscription-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4c84af;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.inscription-container button:hover {
+    background-color: #4c84af;
+}
+
+.input-row {
+    display: flex; /* Affiche les éléments en ligne */
+    justify-content: space-between; /* Espace égal entre les champs */
+    gap: 80px; /* Espacement entre les champs */
+}
+
+.input-row .input-group {
+    flex: 1; /* Les champs prennent une largeur égale */
+}
+
+.input-row .input-group input {
+    width: 100%; /* Le champ occupe tout l'espace disponible dans son conteneur */
+}
+
+
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
     background-color: #eee;
@@ -160,32 +222,23 @@ footer {
 
 /* Pour la page d'accueil */
 .acc{
-    background-image: url('https://www.paris.fr/images/meta/parisfr.jpg'),
-                      url('https://www.larousse.fr/encyclopedie/data/images/1314872-Lyon.jpg'),
-                      url('https://www.lilletourism.com/app/uploads/lille-tourisme/2023/11/thumbs/Centre-ville-de-Lille-Martin-Vangaeveren-41-min-1920x960-crop-1699524524.jpg');
-    background-size: cover; /* S'adapte à la taille de l'écran */
-    background-position: center; /* Centrer l'image */
-    background-repeat: no-repeat; /* Empêcher la répétition */
-    height: 100vh; /* Hauteur de l'écran */
-    animation: slideBackground 15s infinite linear;
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    animation: slide 6s infinite;
 }
 
 /* Animation pour faire défiler les images */
-@keyframes slideBackground {
-    0% {
-        background-position: 0 0;
+@keyframes slide {
+    0%, 100% {
+        transform: translateX(0);
     }
-    33.33% {
-        background-position: -100% 0;
-    }
-    66.66% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: -300% 0;
+    25%, 75% {
+        transform: translateX(-100%);
     }
 }
-
 
 .acc-container {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
