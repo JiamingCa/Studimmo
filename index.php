@@ -37,11 +37,14 @@ switch ($page) {
         $controller->afficherTableauDeBord($userId);
         break;
     
+    
+    
     case 'profils':
         require_once 'app/controllers/ProfilsController.php';
         $controller = new ProfilsController($pdo);
         $controller->afficherProfils($userId);
         break;
+        
 
     // ... autres routes comme accueil, tableau_de_bord, login, etc.
 

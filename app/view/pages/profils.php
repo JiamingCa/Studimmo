@@ -28,27 +28,27 @@
     <div class="profile-grid">
     <div class="profile-item">
             <label for="prenom">Prénom</label>
-            <input type="text" id="prenom"> <br><br>
+            <input type="text" id="prenom",value="<?php echo $prenom; ?>"> <br><br>
         </div>
 
     <div class="profile-item">
             <label for="nom">Nom</label>
-            <input type="text" id="nom"> <br><br>
+            <input type="text" id="nom", value="<?php echo $nom; ?>"> <br><br>
         </div>
 
     <div class="profile-item">
-        <label for="date_de_naissance">Date de naissance</label>
-        <input type="date" id="date_de_naissance"> <br><br>
+        <label for="type">Type</label>
+        <input type="text" id="type", value="<?php echo $type; ?>"> <br><br>
         </div>
 
     <div class="profile-item">
-            <label for="tel">Numéro de téléphone</label>
-            <input type="tel" id="tel"> <br><br>
+            <label for="telephone">Numéro de téléphone</label>
+            <input type="tel" id="tel"value="<?php echo $telephone; ?>"> <br><br>
         </div> 
 
     <div class="profile-item">
             <label for="email">Email</label>
-            <input type="email" id="email"> <br><br>
+            <input type="email" id="email", value="<?php echo $email; ?>"> <br><br>
         </div>
     
     <button class="edit-button" onclick="toggleEdit()">Modifier</button>
@@ -62,8 +62,8 @@
     <div class="profile-title">Sécurité</div>
 
     <div class="profile-item">
-            <label for="mdp">Mot de passe</label>
-            <input type="mdp" id="mdp"> <br><br>
+            <label for="mot_de_passe">Mot de passe</label>
+            <input type="text" id="mot_de_passe", value="<?php echo $mot_de_passe; ?>"> <br><br>
         </div>
         <button class="edit-button" onclick="toggleEdit()">Modifier</button>
     </div>
