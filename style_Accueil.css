@@ -1,0 +1,570 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+
+
+  .logo-button {
+    padding: 0; 
+    margin: 0; 
+    border: none; 
+    background: none; 
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .logo-button img:hover {
+    cursor: pointer;
+    
+  }
+
+ 
+
+/* Reset et box-sizing */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 100vh;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(0deg,#AFC1FF 67%, #BFC2CD 100%);
+    padding: 10px 20px;
+    width: 100%;
+    height: 150px; /* Ajusté pour une hauteur plus standard */
+    position: relative;
+}
+
+/* Logo */
+.logo-link {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.logo {
+    height: 150px; /* Taille de base */
+    max-height: 150%;
+    width: auto;
+    cursor: pointer;
+}
+
+/* Menu de navigation */
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    align-self: flex-start;
+    margin-top: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    font-size: calc(12px + 0.5vw);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #7c7c7c;
+}
+
+/* Bouton d'inscription */
+.inscription-button {
+    text-decoration: none;
+    color: white;
+    font-size: calc(14px + 0.5vw);
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 8px 16px;
+    background-color: transparent;
+    border-radius: 4px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.inscription-button:hover {
+    color: #7c7c7c;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Avatar pour l'utilisateur connecté */
+.profile-avatar {
+    align-self: center;
+    
+}
+
+.avatar-img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.profile-icons {
+    width: 80px;
+    height: 22px;
+    gap: 5px;
+}
+
+/* Style des icônes */
+.profile-icons i {
+    font-size: 18px;
+    cursor: pointer;
+    color: rgb(66 66 66); 
+    
+}
+
+
+/* Menu burger pour mobile */
+.burger-menu {
+    color: white;
+    font-size: calc(24px + 0.5vw);
+    cursor: pointer;
+    display: none; /* Masqué par défaut */
+}
+
+/* Media Query pour les petits écrans */
+@media (max-width: 690px) {
+    /* Votre media query existante */
+}
+
+  .hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+    color: white;
+    background-size: cover;
+    position: relative;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+
+  .hero h1 {
+    z-index: 2;
+    position: relative;
+    font-size: 3rem;
+    margin: 0;
+  }
+
+  .hero p {
+    z-index: 2;
+    position: relative;
+    margin: 1rem 0 2rem;
+  }
+
+  .hero .search-container {
+    z-index: 2;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero input[type="text"] {
+    padding: 1rem;
+    width: 300px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+  }
+
+  .hero button {
+    padding: 1rem;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #ffdd59;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .hero button:hover {
+    background-color: #e8c43c;
+  }
+
+  .features {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 1rem;
+    background-color: #fff;
+  }
+
+  .feature {
+    text-align: center;
+    max-width: 300px;
+  }
+
+  .feature i {
+    font-size: 3rem;
+    color: #007AFF;
+    margin-bottom: 1rem;
+  }
+
+  .feature h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .cta {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(90deg, #ffdd59, #ffc300);
+    color: white;
+  }
+
+  .cta h2 {
+    margin-bottom: 1rem;
+  }
+
+  .cta button {
+    padding: 1rem 2rem;
+    background-color: white;
+    color: #007AFF;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .cta button:hover {
+    background-color: #f0f0f0;
+  }
+
+  footer {
+    background-color: #000; /* Fond noir */
+    color: #fff; /* Texte blanc */
+    padding: 0px 20px 20px 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .top-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo img {
+    max-height: 120px;
+    width: auto;
+    background-color: #e2f1ffdb;
+    border-radius: 30px;
+    margin-top: 20px;
+  }
+  
+  .socials {
+    text-align: left; 
+    
+  }
+  
+  .socials p {
+    margin: 0;
+    font-size: 14px;
+    color: #bbb; /* Couleur du texte gris clair */
+  }
+  
+  .socials .icons {
+    margin-top: 5px;
+  }
+  
+  .socials .icons a {
+    color: #fff;
+    margin-right: 15px;
+    text-decoration: none;
+    font-size: 24px; /* Agrandir les icônes */
+    transition: color 0.3s ease; /* Animation */
+  }
+  
+  .socials .icons a:hover {
+    color: #ccc; /* Changement générique de couleur */
+  }
+  
+  .socials .icons a:hover .fa-youtube {
+    color: #FF0000; /* Couleur rouge pour YouTube */
+  }
+  
+  .socials .icons a:hover .fa-facebook-f {
+    color: #1877F2; /* Couleur bleue pour Facebook */
+  }
+  
+  .socials .icons a:hover .fa-instagram {
+    background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Applique le dégradé au texte */
+  }
+  
+  .socials .icons a:hover .fa-linkedin-in {
+    color: #0077B5; /* Couleur bleue pour LinkedIn */
+  }
+  
+  .socials .icons a:hover .fa-tiktok {
+    background: linear-gradient(100deg, #c6f9fc, #ffffff, #ffb7c5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Applique le dégradé au texte */
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px solid #fff; /* Ligne blanche fine */
+    margin: 20px 0;
+  }
+  
+  /* Bottom Section */
+  .bottom-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Réorganise en petits écrans */
+  }
+  
+  .column {
+    flex: 1;
+    margin: 0 10px;
+    max-width: 200px; /* Réduit l'espacement */
+  }
+  
+  .column h3 {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  
+  .column ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .column ul li {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .column ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .column ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Site Description Section */
+  .site-description {
+    flex: 1;
+    margin: 0 10px;
+    max-width: 203px; /* Réduit l'espacement */
+  }
+  
+  .site-description h3 {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  
+  /* Support and Location Section */
+  .support-location {
+    display: flex;
+    justify-content: center; /* Centrer les deux sections */
+    gap: 50px; /* Espacement entre les deux */
+    margin-top: 20px;
+  }
+  
+  .support, .location {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .support h3, .location h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .support p, .location p, .site-description p {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .support a, .location a {
+    color: #00aced;
+    text-decoration: none;
+  }
+  
+  .support a:hover, .location a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Mentions légales */
+  .legal-links {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 12px;
+    color: #bbb;
+  }
+  
+  .legal-links a {
+    color: #bbb;
+    text-decoration: none;
+  }
+  
+  .legal-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .top-footer {
+      align-items: flex-start;
+    }
+  
+    
+  
+    .bottom-footer {
+      align-items: center;
+    }
+  
+    .support-location {
+      align-items: center;
+    }
+  
+    .support, .location {
+      margin-bottom: 20px;
+    }
+  }
+
+
+.search-container {
+  position: relative;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#searchInput:focus {
+  border-color: #007BFF;
+}
+
+.suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 10;
+  display: none; /* Cacher initialement */
+}
+
+.suggestions-list li {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.suggestions-list li small {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Suggestions quand il n'y a rien */
+.suggestions-list li.no-results {
+  color: grey;
+  font-style: italic;
+}
+
+/* Suggestions de type erreur */
+.suggestions-list li.error {
+  color: red;
+  font-style: italic;
+}
+
+.suggestions-list li strong {
+  font-weight: bold;
+}
+
+/* Afficher la liste quand il y a des résultats */
+#searchSuggestions {
+  display: block;
+}
+
+/* Carrousel */
+.image-slider {
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px; /* Pour séparer du bouton rechercher */
+  margin-left: auto; /* Centrer horizontalement */
+  margin-right: auto; /* Centrer horizontalement */
+}
+
+.slides {
+  display: flex;
+  width: 300%; /* Trois images côte à côte (chaque image occupe 1/3 de la largeur) */
+  animation: slide 10s infinite; /* Animation de défilement automatique */
+}
+
+.slides img {
+  width: 100%; /* Chaque image occupe un tiers de la largeur de .slides (donc 400px chacune) */
+  object-fit: cover; /* Assure que les images sont bien recadrées sans déformation */
+}
+
+/* Animation de défilement */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-33.33%); /* Déplacer les images vers la gauche */
+  }
+  50% {
+    transform: translateX(-66.66%); /* Déplacer encore plus vers la gauche */
+  }
+  75% {
+    transform: translateX(-100%); /* Réinitialiser au début après un tour complet */
+  }
+  100% {
+    transform: translateX(0); /* Revenir à la position initiale */
+  }
+}
+
+
+  
