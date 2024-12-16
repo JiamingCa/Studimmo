@@ -27,7 +27,7 @@
             </div>
 
             <!-- Carte Mes alertes -->
-            <div class="card" onclick="location.href='index.php?page=alerte';">
+            <div class="card" onclick="location.href='index.php?page=alertes';">
                 <i class="fas fa-bell icon"></i>
                 <h2>Mes alertes</h2>
                 <p>Gérer vos recherches sauvegardées</p>

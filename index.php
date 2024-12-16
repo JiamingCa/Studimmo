@@ -9,15 +9,16 @@ require_once 'config/connexion.php';
 
 // Simulation d'un utilisateur connecté (utilisateur avec id = 1)
 if (!isset($_SESSION['user_id'])) {
-    $_SESSION['user_id'] = 1; // Remplacez "1" par l'id réel d'un utilisateur dans votre base de données
+    $_SESSION['user_id'] = 2; // Remplacez "1" par l'id réel d'un utilisateur dans votre base de données
 }
 // Récupération de l'id de l'utilisateur connecté
 $userId = $_SESSION['user_id'];
+$userId =2;
 
 
 
 // Vérification des paramètres dans l'URL (route)
-$page = isset($_GET['page']) ? $_GET['page'] : 'mon_espace'; // Par défaut, "accueil"
+$page = isset($_GET['page']) ? $_GET['page'] : 'Creer_dossier'; // Par défaut, "accueil"
 
 // Charger le contrôleur correspondant
 switch ($page) {
@@ -38,6 +39,28 @@ switch ($page) {
         $controller = new DashboardController($pdo);
         $controller->afficherTableauDeBord($userId);
         break;
+    
+    case 'alertes':
+        require_once 'app/controllers/AlertesController.php';
+        $controller = new AlertesController($pdo);
+        $controller->afficherAlertes($userId);
+        break;
+
+    case 'Creer_dossier':
+        require_once 'app/controllers/Creer_dossierController.php';
+        $controller = new Creer_dossierController($pdo);
+        $controller->afficherCreer_dossier($userId);
+        break;
+
+    case 'traiter_fichiers':
+        require_once 'app/controllers/Creer_dossierController.php';
+        $controller = new Creer_dossierController($pdo);
+        $controller->traiterFichiers($userId);
+        break;
+    case 'confirmation':
+        require 'app/view/pages/confirmation.php';
+        break;
+
 
     // ... autres routes comme accueil, tableau_de_bord, login, etc.
 

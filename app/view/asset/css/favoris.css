@@ -13,14 +13,14 @@ body {
 
 .header-favoris {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     margin-bottom: 20px;
 }
 
 .header-favoris h1 {
     font-size: 24px;
-    color: #333;
+    color: #ffffff;
 }
 
 .tri-options {

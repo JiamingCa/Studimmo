@@ -7,14 +7,21 @@
     <link rel="stylesheet" href="app/view/asset/css/favoris.css">
     <link rel="stylesheet" href="app/view/asset/css/footer.css">
     <link rel="stylesheet" href="app/view/asset/css/header.css">
+    <link rel="stylesheet" href="app/view/asset/css/template.css">
+    <link rel="stylesheet" href="app/view/asset/css/popup_contcter.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
 </head>
 <body>
     <?php include 'app/view/templates/header.php'; ?>
+    <div class="titre">
+        <a href='index.php?page=mon_espace' class="back-button">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <t1>Mes Favoris (<?= $nombreFavoris ?>)</t1>
+    </div>
     <div class="favoris-container">
         <div class="header-favoris">
-            <h1>Mes Favoris (<?= $nombreFavoris ?>)</h1>
             <div class="tri-options">
                 <label for="tri">Trier par :</label>
                 <select id="tri" name="tri" onchange="trierFavoris(this.value)">
@@ -49,13 +56,14 @@
                             <p><strong></strong> <?= htmlspecialchars($annonce['type']) ?></p>
                         </div>
                         <p><strong>Localisation :</strong> <?= htmlspecialchars($annonce['localisation']) ?></p>
-                        <button class="btn-contacter">Contacter</button>
+                        <button class="btn-contacter" onclick="togglePopup()">Contacter</button>
                     </div>
                     <!-- Changer l'icône du cœur en fonction de `is_favori` -->
                     <button class="favori-toggle" data-id="<?= $annonce['id_annonce'] ?>" data-active="<?= $annonce['is_favori'] ? 'true' : 'false' ?>">
                         <i class="bi <?= $annonce['is_favori'] ? 'bi-heart-fill' : 'bi-heart' ?>" style="color: <?= $annonce['is_favori'] ? 'red' : 'black' ?>"></i>
                     </button>
                 </div>
+                <?php include 'app/view/templates/popup_contacter.php'; ?>
             <?php endforeach; ?>
         <?php else: ?>
             <p>Aucune annonce trouvée dans vos favoris.</p>
@@ -183,6 +191,7 @@
             imageElement.src = images[currentIndex];
             imageElement.dataset.currentIndex = currentIndex; // Mettre à jour l'index courant
         }
+        
 
     </script>
 
