@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
 </head>
 <body>
+    <div id="loading-screen" class="loading-screen hidden" onclick="togglespin()">
+        <div id="spin" class="spinner"></div>
+    </div>
+
     <?php include 'app/view/templates/header.php'; ?>
 
     <div class="dossier-wrapper">
@@ -135,7 +139,7 @@
 
             <!-- Bouton de finalisation -->
             <div class="finalize-section">
-                <button type="submit" class="finalize-btn">Créer mon dossier</button>
+                <button type="submit" onclick="togglespin()"class="finalize-btn">Créer mon dossier</button>
             </div>
         </form>
     </div>
@@ -143,5 +147,15 @@
     <?php include 'app/view/templates/footer.php'; ?>
 
     <script src="app/view/asset/js/creer_dossier.js"></script>
+    <script>
+        function togglespin() {
+            const popup = document.getElementById('loading-screen');
+            popup.classList.toggle('hidden');
+        }
+
+
+
+
+    </script>
 </body>
 </html>

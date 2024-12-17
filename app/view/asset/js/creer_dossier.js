@@ -6,37 +6,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const garantPhysique = document.getElementById("garant_physique");
     const garantMoral = document.getElementById("garant_moral");
 
-    // Map pour garder une trace des numéros d'incrémentation pour chaque input
-    const fileCounters = {};
+    // Stockage temporaire des fichiers par input
+    const fileStorage = {};
 
-    // Gestion de l'importation des fichiers
+    // Initialisation des fichiers pour chaque input
     inputs.forEach(input => {
-        const inputId = input.id;
-        fileCounters[inputId] = 0; // Initialiser le compteur pour cet input
-
-        input.addEventListener("change", () => {
-            updatePreview(input, inputId);
-            updateProgress();
-        });
+        fileStorage[input.id] = []; // Initialisation du stockage des fichiers
+        input.addEventListener("change", () => handleFileChange(input));
     });
 
-    // Affichage conditionnel et réinitialisation des sections Garant
+    // Gestion de l'affichage conditionnel des sections Garant
     garantType?.addEventListener("change", event => {
         const value = event.target.value;
 
-        // Masquer/Afficher les sections et réinitialiser les fichiers
         if (value === "physique") {
-            resetSection(garantMoral); // Réinitialiser garant moral
+            clearFileStorage(garantMoral); // Supprimer réellement les fichiers pour "moral"
             garantPhysique?.classList.remove("hidden");
             garantMoral?.classList.add("hidden");
         } else if (value === "moral") {
-            resetSection(garantPhysique); // Réinitialiser garant physique
+            clearFileStorage(garantPhysique); // Supprimer réellement les fichiers pour "physique"
             garantPhysique?.classList.add("hidden");
             garantMoral?.classList.remove("hidden");
         } else {
-            // Aucun garant
-            resetSection(garantPhysique);
-            resetSection(garantMoral);
+            clearFileStorage(garantPhysique); // Supprimer les fichiers pour "physique"
+            clearFileStorage(garantMoral);   // Supprimer les fichiers pour "moral"
             garantPhysique?.classList.add("hidden");
             garantMoral?.classList.add("hidden");
         }
@@ -44,61 +37,67 @@ document.addEventListener("DOMContentLoaded", () => {
         updateProgress();
     });
 
-    function updatePreview(input, inputId) {
-        const preview = input.closest(".sub-card, .card").querySelector(".file-preview");
-        const files = Array.from(input.files);
+    // Gestion des fichiers
+    function handleFileChange(input) {
+        const inputId = input.id;
+        const preview = input.closest(".card, .sub-card").querySelector(".file-preview");
 
-        // Vérifier et supprimer le message "Aucun fichier importé"
-        const emptyMessage = preview.querySelector("p");
-        if (emptyMessage && emptyMessage.textContent === "Aucun fichier importé") {
-            emptyMessage.remove();
-        }
+        // Ajouter les fichiers au stockage
+        const newFiles = Array.from(input.files);
+        fileStorage[inputId] = [...fileStorage[inputId], ...newFiles];
 
-        if (files.length > 0) {
-            files.forEach(file => {
-                const fileName = file.name;
-                const fileId = `${inputId}-file-${fileCounters[inputId]++}`; // Utilisation et incrémentation du compteur
+        // Mettre à jour l'aperçu
+        updatePreview(preview, fileStorage[inputId]);
 
-                const fileContainer = document.createElement("div");
-                fileContainer.classList.add("preview-content");
-                fileContainer.id = fileId;
+        // Réinitialiser l'input pour permettre un nouvel ajout
+        input.value = "";
+        updateProgress();
+    }
 
-                fileContainer.innerHTML = `
-                    <p>${fileName}</p>
-                    <button class="delete-btn" title="Supprimer le fichier">❌</button>
-                `;
+    function updatePreview(preview, files) {
+        preview.innerHTML = ""; // Réinitialiser l'affichage
 
-                preview.appendChild(fileContainer);
+        files.forEach((file, index) => {
+            const fileContainer = document.createElement("div");
+            fileContainer.classList.add("preview-content");
 
-                // Gestion de la suppression individuelle des fichiers
-                const deleteBtn = fileContainer.querySelector(".delete-btn");
-                deleteBtn.addEventListener("click", () => {
-                    fileContainer.remove();
-                    updateProgress();
+            fileContainer.innerHTML = `
+                <p>${file.name}</p>
+                <button class="delete-btn" data-index="${index}" title="Supprimer le fichier">❌</button>
+            `;
 
-                    // Réinitialiser si tout est supprimé
-                    if (preview.querySelectorAll(".preview-content").length === 0) {
-                        input.value = "";
-                        preview.innerHTML = "<p>Aucun fichier importé</p>";
-                    }
-                });
+            // Suppression des fichiers
+            fileContainer.querySelector(".delete-btn").addEventListener("click", (event) => {
+                const fileIndex = event.target.dataset.index;
+                files.splice(fileIndex, 1); // Supprimer le fichier du stockage
+                updatePreview(preview, files); // Mettre à jour l'affichage
+                updateProgress();
             });
+
+            preview.appendChild(fileContainer);
+        });
+
+        // Ajouter un message si aucun fichier n'est présent
+        if (files.length === 0) {
+            preview.innerHTML = "<p>Aucun fichier importé</p>";
         }
     }
 
-    function resetSection(section) {
+    function clearFileStorage(section) {
         if (!section) return;
 
-        // Réinitialiser tous les inputs de fichier de cette section
         const inputs = section.querySelectorAll("input[type='file']");
         inputs.forEach(input => {
-            input.value = ""; // Réinitialiser l'input
+            const inputId = input.id;
+
+            // Supprimer les fichiers du stockage
+            fileStorage[inputId] = [];
+
+            // Nettoyer l'aperçu
             const preview = input.closest(".sub-card, .card").querySelector(".file-preview");
             if (preview) {
-                preview.innerHTML = "<p>Aucun fichier importé</p>"; // Réinitialiser l'aperçu
+                preview.innerHTML = "<p>Aucun fichier importé</p>";
             }
-            // Réinitialiser le compteur associé à l'input
-            fileCounters[input.id] = 0;
         });
     }
 
@@ -106,75 +105,82 @@ document.addEventListener("DOMContentLoaded", () => {
         const sections = document.querySelectorAll(".card");
         let filledSections = 0;
         let totalSections = 0;
-
+    
         sections.forEach(section => {
             if (section.id === "garant") {
-                const garantTypeValue = garantType.value;
-
+                const garantTypeValue = garantType?.value;
+    
                 if (garantTypeValue === "physique") {
-                    const subSections = section.querySelectorAll(".sub-card");
+                    // Prendre en compte uniquement les sous-sections de garant physique
+                    const subSections = section.querySelectorAll("#garant_physique .sub-card");
                     totalSections += subSections.length;
-
+    
                     subSections.forEach(subSection => {
                         const input = subSection.querySelector("input[type='file']");
-                        const preview = subSection.querySelector(".file-preview");
-
-                        if (input && preview.querySelectorAll(".preview-content").length > 0) {
-                            filledSections++; // Une sous-section remplie
+                        if (fileStorage[input.id]?.length > 0) {
+                            filledSections++;
                         }
                     });
                 } else if (garantTypeValue === "moral") {
-                    const input = garantMoral.querySelector("input[type='file']");
-                    const preview = garantMoral.querySelector(".file-preview");
-
-                    totalSections += 1; // Compté comme une seule section
-                    if (input && preview.querySelectorAll(".preview-content").length > 0) {
-                        filledSections++;
-                    }
+                    // Prendre en compte uniquement la section garant moral
+                    const inputsInMoral = section.querySelectorAll("#garant_moral input[type='file']");
+                    totalSections += inputsInMoral.length;
+    
+                    inputsInMoral.forEach(input => {
+                        if (fileStorage[input.id]?.length > 0) {
+                            filledSections++;
+                        }
+                    });
                 }
-                // Si "Aucun garant", aucune section n'est comptabilisée
+                // Ne pas ajouter de sections si garantType est "aucun"
             } else {
-                totalSections += 1;
+                // Compter les autres sections
+                totalSections++;
                 const inputsInSection = section.querySelectorAll("input[type='file']");
-                let sectionFilled = false;
-
-                inputsInSection.forEach(input => {
-                    const preview = input.closest(".sub-card, .card").querySelector(".file-preview");
-                    if (preview.querySelectorAll(".preview-content").length > 0) {
-                        sectionFilled = true; // Section remplie si un fichier est présent
-                    }
-                });
-
-                if (sectionFilled) {
+                if (Array.from(inputsInSection).some(input => fileStorage[input.id]?.length > 0)) {
                     filledSections++;
                 }
             }
         });
-
+    
         const progress = (filledSections / totalSections) * 100;
         progressBar.style.width = `${progress}%`;
         progressText.textContent = `${Math.round(progress)}% Complété`;
     }
-});
+    
 
-
-document.addEventListener("DOMContentLoaded", () => {
+    // Gestion de la soumission du formulaire
     const form = document.querySelector("form");
+    form.addEventListener("submit", (event) => {
+        const formData = new FormData();
 
-    form.addEventListener("submit", (e) => {
-        // Vérifiez si des fichiers ont été importés
-        const inputs = document.querySelectorAll("input[type='file']");
-        let hasFiles = false;
-
-        inputs.forEach(input => {
-            if (input.files.length > 0) {
-                hasFiles = true;
-            }
+        // Ajouter tous les fichiers stockés au FormData
+        Object.keys(fileStorage).forEach(inputId => {
+            fileStorage[inputId].forEach((file, index) => {
+                formData.append(`${inputId}[]`, file, file.name);
+            });
         });
 
-        if (!hasFiles) {
-            e.preventDefault();
+        // Vérifier si des fichiers ont été importés
+        if ([...formData.keys()].length === 0) {
+            event.preventDefault();
             alert("Veuillez importer au moins un fichier avant de soumettre.");
+            return;
         }
+
+        // Envoyer les données via AJAX ou continuer la soumission classique
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", form.action, true);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                window.location.href = "?page=confirmation";
+            } else {
+                alert("Erreur lors de l'envoi des fichiers.");
+            }
+        };
+        xhr.send(formData);
+
+        // Empêcher la soumission classique
+        event.preventDefault();
     });
 });
