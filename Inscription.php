@@ -60,6 +60,23 @@
                     <button type="submit">S'inscrire</button>
                 </div>
             </form>
+
+            <div id="verificationModal" style="display:none;">
+                <div class="modal-content">
+                    <h3>Vérification requise</h3>
+                    <div>
+                        <label for="code_email">Code de vérification email :</label>
+                        <input type="text" id="code_email" required>
+                        <button onclick="sendVerificationEmail()">Renvoyer le code</button>
+                    </div>
+                    <div>
+                        <label for="code_telephone">Code de vérification téléphone :</label>
+                        <input type="text" id="code_telephone" required>
+                        <button onclick="sendVerificationPhone()">Renvoyer le code</button>
+                    </div>
+                    <button onclick="validateVerification()">Valider</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -129,7 +146,96 @@
 
         return true;
     }
-</script>
 
+    let formData = {}; // Variable pour stocker les données d'inscription temporairement
+
+    function handleRegistration(event) {
+        event.preventDefault(); // Empêcher la soumission du formulaire
+
+        // Stocker les données du formulaire
+        formData = {
+            nom: document.getElementById("nom").value,
+            prenom: document.getElementById("prenom").value,
+            email: document.getElementById("email").value,
+            telephone: document.getElementById("telephone").value,
+            mot_de_passe: document.getElementById("mot_de_passe1").value,
+            mot_de_passe2: document.getElementById("mot_de_passe2").value
+        };
+
+        // Vérifier les mots de passe
+        if (formData.mot_de_passe !== formData.mot_de_passe2) {
+            alert("Les mots de passe ne correspondent pas !");
+            return false;
+        }
+
+        // Envoyer les codes de vérification
+        sendVerificationEmail();
+        sendVerificationPhone();
+
+        // Afficher le pop-up
+        document.getElementById("verificationModal").style.display = "block";
+    }
+
+    function sendVerificationEmail() {
+        fetch('sendVerificationEmail.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: formData.email })
+        }).then(response => response.json())
+        .then(data => {
+            if (!data.success) {
+                alert("Erreur en envoyant le code email : " + data.error);
+            }
+        });
+    }
+
+    function sendVerificationPhone() {
+        fetch('sendVerificationPhone.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ telephone: formData.telephone })
+        }).then(response => response.json())
+        .then(data => {
+            if (!data.success) {
+                alert("Erreur en envoyant le code téléphone : " + data.error);
+            }
+        });
+    }
+
+    function validateVerification() {
+        const codeEmail = document.getElementById("code_email").value;
+        const codeTelephone = document.getElementById("code_telephone").value;
+
+        fetch('validateVerification.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: formData.email, code_email: codeEmail, code_telephone: codeTelephone })
+        }).then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Inscription dans la base de données après validation
+                registerUser();
+            } else {
+                alert("Code invalide : " + data.error);
+            }
+        });
+    }
+
+    function registerUser() {
+        fetch('registerUser.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        }).then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Inscription réussie !");
+                window.location.href = "Connexion.php";
+            } else {
+                alert("Erreur lors de l'inscription : " + data.error);
+            }
+        });
+    }
+</script>
 </body>
 </html>
