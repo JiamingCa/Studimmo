@@ -4,23 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studimmo</title>
-    <link rel="stylesheet" type="text/css" href="template.css"/>
+    <link rel="stylesheet" type="text/css" href="app/view/asset/css/ptemplate.css"/>
+    <link rel="stylesheet" type="text/css" href="app/view/asset/css/header.css"/>
 </head>
 <body>
 
-<?php require('model/connexionBase.php'); ?>
-
-<header>
-    <h1>Studimmo</h1>
-</header>
-
-<?php include("view/navbar.php"); ?>
-<?php require('model/connexionfonction.php'); ?>
+<?php require('app/model/connexionBase.php'); ?>
+<?php include("app/view/templates/header.php"); ?>
+<?php require('app/model/connexionfonction.php'); ?>
 <div class="login">
     <div class="container">
         <div class="login-container">
             <h2>Connexion</h2>
-            <div>Vous n'avez pas de compte ? <a href="Inscription.php">S'inscrire</a></div>
+            <div>Vous n'avez pas de compte ? <a href="index.php?page=Inscription">S'inscrire</a></div>
             <form action="Connexion.php" method="POST">
                 <div class="input-group">
                     <label for="email">Votre email</label>

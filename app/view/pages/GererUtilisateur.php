@@ -1,11 +1,11 @@
 <?php
 // Connexion à la base de données
-require("model/connexionBase.php");
+require('app/model/connexionBase.php');
 
 // Gestion AJAX : suppression d'un utilisateur
 if (isset($_POST['action']) && $_POST['action'] === 'delete') {
     $id_Utilisateur = intval($_POST['id_Utilisateur']);
-    $stmt = $db->prepare("DELETE FROM utilisateur WHERE id_Utilisateur = :id_Utilisateur");
+    $stmt = $pdo->prepare("DELETE FROM utilisateur WHERE id_Utilisateur = :id_Utilisateur");
     $stmt->execute(['id_Utilisateur' => $id_Utilisateur]);
     echo json_encode(['status' => 'success']);
     exit;
@@ -19,7 +19,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'update') {
     $email = $_POST['email'];
     $type = $_POST['type'];
 
-    $stmt = $db->prepare("UPDATE utilisateur SET prenom = :prenom, nom = :nom, email = :email, type = :type WHERE id_Utilisateur = :id_Utilisateur");
+    $stmt = $pdo->prepare("UPDATE utilisateur SET prenom = :prenom, nom = :nom, email = :email, type = :type WHERE id_Utilisateur = :id_Utilisateur");
     $stmt->execute([
         'prenom' => $prenom,
         'nom' => $nom,
@@ -32,7 +32,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'update') {
 }
 
 // Récupération de tous les utilisateurs
-$stmt = $db->query("SELECT * FROM utilisateur");
+$stmt = $pdo->query("SELECT * FROM utilisateur");
 $utilisateur = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -138,10 +138,11 @@ $utilisateur = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="template.css"/>
+    <link rel="stylesheet" type="text/css" href="app/view/asset/css/ptemplate.css"/>
+    <link rel="stylesheet" type="text/css" href="app/view/asset/css/header.css"/>
 </head>
 <body>
-<?php include("view/navbar.php"); ?>
+<?php include("app/view/templates/header.php"); ?>
 <div class="container">
     <h1>Gérer les utilisateurs</h1>
     <table>

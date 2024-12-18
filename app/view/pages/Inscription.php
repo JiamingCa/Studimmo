@@ -4,23 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studimmo</title>
-    <link rel="stylesheet" type="text/css" href="template.css"/>
+    <link rel="stylesheet" type="text/css" href="app/view/asset/css/ptemplate.css"/>
+    <link rel="stylesheet" type="text/css" href="app/view/asset/css/header.css"/>
 </head>
 <body>
 
-<?php require('model/connexionBase.php'); ?>
-
-<header>
-    <h1>Studimmo</h1>
-</header>
-
-<?php include("view/navbar.php"); ?>
-<?php require("model/inscriptionfonction.php"); ?>
+<?php require('app/model/connexionBase.php'); ?>
+<?php include("app/view/templates/header.php"); ?>
+<?php require('app/model/inscriptionfonction.php'); ?>
 <div class="login">
     <div class="container">
         <div class="inscription-container">
             <h2>Créer un compte</h2>
-            <div>Vous avez déjà un compte ? <a href="Connexion.php">Se connecter</a></div>
+            <div>Vous avez déjà un compte ? <a href="index.php?page=Connexion">Se connecter</a></div>
             <div id="error-messages"></div>
             <form action="Inscription.php" method="POST" onsubmit="return checkform(event)">
                 <div class="input-row">

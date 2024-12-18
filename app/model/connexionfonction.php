@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 
 // Vérifie si le formulaire est soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         // Préparer la requête pour récupérer l'utilisateur
-        $stmt = $db->prepare('SELECT id_Utilisateur, nom, prenom, type,  mot_de_passe FROM utilisateur WHERE email = :email');
+        $stmt = $pdo->prepare('SELECT id_Utilisateur, nom, prenom, type,  mot_de_passe FROM utilisateur WHERE email = :email');
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['type'] = $utilisateur['type'];
 
             // Redirige vers une page sécurisée
-            header('Location: FAQ.php');
+            header('Location: index.php');
             exit;
         } else {
             die('Identifiants incorrects.');

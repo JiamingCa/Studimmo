@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     
     // Simuler la vérification de l'état de connexion de l'utilisateur
-    const userLoggedIn = true; // Changez à true pour tester l'état connecté
-
+    const userLoggedIn = typeof USER_LOGGED_IN !== 'undefined' ? USER_LOGGED_IN : false;
+    
     if (userLoggedIn) {
         // Masquer le bouton d'inscription
         inscriptionButton.style.display = 'none';

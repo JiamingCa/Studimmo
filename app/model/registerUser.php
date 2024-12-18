@@ -7,7 +7,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 $mot_de_passe_hash = password_hash($data['mot_de_passe'], PASSWORD_DEFAULT);
 
 try {
-    $stmt = $db->prepare('INSERT INTO utilisateur (nom, prenom, email, telephone, mot_de_passe) VALUES (:nom, :prenom, :email, :telephone, :mot_de_passe)');
+    $stmt = $pdo->prepare('INSERT INTO utilisateur (nom, prenom, email, telephone, mot_de_passe) VALUES (:nom, :prenom, :email, :telephone, :mot_de_passe)');
     $stmt->execute([
         ':nom' => $data['nom'],
         ':prenom' => $data['prenom'],
