@@ -1,5 +1,5 @@
 <?php
-// session_start();
+
 
 // Vérifie si le formulaire est soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -23,13 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Vérifie si l'utilisateur existe
         if ($utilisateur && password_verify($mot_de_passe, $utilisateur['mot_de_passe'])) {
             // Connexion réussie, stocke les informations en session
+            session_start();
             $_SESSION['id_Utilisateur'] = $utilisateur['id_Utilisateur'];
-            $_SESSION['nom'] = $utilisateur['nom'];
-            $_SESSION['prenom'] = $utilisateur['prenom'];
-            $_SESSION['type'] = $utilisateur['type'];
-
+            $userId = $_SESSION['id_Utilisateur'] ;
+            
             // Redirige vers une page sécurisée
-            header('Location: index.php');
+            header('Location: index.php?page=mon_espace');
             exit;
         } else {
             die('Identifiants incorrects.');

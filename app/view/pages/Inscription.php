@@ -5,19 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studimmo</title>
     <link rel="stylesheet" type="text/css" href="app/view/asset/css/ptemplate.css"/>
-    <link rel="stylesheet" type="text/css" href="app/view/asset/css/header.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+
 </head>
 <body>
 
-<?php include("app/view/templates/header.php"); ?>
-<?php require('app/model/inscriptionfonction.php'); ?>
+
+
 <div class="login">
     <div class="container">
+        <div class="back-link">
+            <a href="javascript:history.back()" title="Retour">
+                <i class="bi bi-arrow-left-circle" style="font-size: 40px; color: aliceblue;"></i>
+            </a>
+        </div>
         <div class="inscription-container">
             <h2>Créer un compte</h2>
             <div>Vous avez déjà un compte ? <a href="index.php?page=Connexion">Se connecter</a></div>
             <div id="error-messages"></div>
-            <form action="Inscription.php" method="POST" onsubmit="return checkform(event)">
+            <form  method="POST" onsubmit="return checkform(event)">
                 <div class="input-row">
                     <div class="input-group">
                         <label for="nom">Votre nom</label>

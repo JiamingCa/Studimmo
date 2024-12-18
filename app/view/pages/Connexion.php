@@ -5,18 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studimmo</title>
     <link rel="stylesheet" type="text/css" href="app/view/asset/css/ptemplate.css"/>
-    <link rel="stylesheet" type="text/css" href="app/view/asset/css/header.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+
 </head>
 <body>
 
-<?php include("app/view/templates/header.php"); ?>
-<?php require('app/model/connexionfonction.php'); ?>
+
+
 <div class="login">
     <div class="container">
+        <div class="back-link">
+            <a href="javascript:history.back()" title="Retour">
+                <i class="bi bi-arrow-left-circle" style="font-size: 40px; color: aliceblue;"></i>
+            </a>
+        </div>
         <div class="login-container">
             <h2>Connexion</h2>
             <div>Vous n'avez pas de compte ? <a href="index.php?page=Inscription">S'inscrire</a></div>
-            <form action="Connexion.php" method="POST">
+            <form  method="POST">
                 <div class="input-group">
                     <label for="email">Votre email</label>
                     <input type="text" id="email" name="email" required>

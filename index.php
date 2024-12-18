@@ -13,11 +13,15 @@ require_once 'config/connexion.php';
 // }
 // // Récupération de l'id de l'utilisateur connecté
 // $userId = $_SESSION['user_id'];
-
+$userLoggedIn = isset($_SESSION['id_Utilisateur']);
+echo "<script>const userLoggedIn = " . json_encode($userLoggedIn) . ";</script>";
+if (isset($_SESSION['id_Utilisateur'])) {
+    $userId = $_SESSION['id_Utilisateur']; // Récupère l'ID utilisateur depuis la session
+}
 
 
 // Vérification des paramètres dans l'URL (route)
-$page = isset($_GET['page']) ? $_GET['page'] : 'homepage'; // Par défaut, "accueil"
+$page = isset($_GET['page']) ? $_GET['page'] : 'mon_espace'; // Par défaut, "accueil"
 
 // Charger le contrôleur correspondant
 switch ($page) {
@@ -44,6 +48,12 @@ switch ($page) {
         $controller = new ConnexionController($pdo);
         $controller->afficherConnexion();
         break;
+    
+    case 'deconnexion':
+        require_once 'app/controllers/DeconnexionController.php';
+        $controller = new DeconnexionController($pdo);
+        $controller->afficherDeconnexion();
+        break;
 
     case 'Inscription':
         require_once 'app/controllers/InscriptionController.php';
@@ -53,8 +63,6 @@ switch ($page) {
 
     case 'GererUtilisateur':
         require_once 'app/controllers/GererUtilisateurController.php';
-        $controller = new GererUtilisateurController($pdo);
-        $controller->afficherGererUtilisateur($userId);
         break;
 
     case 'homepage':

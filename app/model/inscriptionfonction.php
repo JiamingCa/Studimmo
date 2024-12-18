@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($stmt->execute()) {
             // Redirige l'utilisateur vers la page de connexion après l'inscription
-            header('Location: Connexion.php?success=1');
+            header('Location: index.php?page=Connexion');
             exit;
         } else {
             die('Erreur lors de l\'inscription. Veuillez réessayer.');
