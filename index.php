@@ -8,12 +8,17 @@ require_once 'config/connexion.php';
 
 
 // Simulation d'un utilisateur connecté (utilisateur avec id = 1)
-if (!isset($_SESSION['user_id'])) {
-    $_SESSION['user_id'] = 2; // Remplacez "1" par l'id réel d'un utilisateur dans votre base de données
+
+// if (!isset($_SESSION['user_id'])) {
+//     $_SESSION['user_id'] = 1; // Remplacez "1" par l'id réel d'un utilisateur dans votre base de données
+// }
+// // Récupération de l'id de l'utilisateur connecté
+// $userId = $_SESSION['user_id'];
+$userLoggedIn = isset($_SESSION['id_Utilisateur']);
+echo "<script>const userLoggedIn = " . json_encode($userLoggedIn) . ";</script>";
+if (isset($_SESSION['id_Utilisateur'])) {
+    $userId = $_SESSION['id_Utilisateur']; // Récupère l'ID utilisateur depuis la session
 }
-// Récupération de l'id de l'utilisateur connecté
-$userId = $_SESSION['user_id'];
-$userId =2;
 
 
 
@@ -39,7 +44,7 @@ switch ($page) {
         $controller = new DashboardController($pdo);
         $controller->afficherTableauDeBord($userId);
         break;
-    
+
     case 'alertes':
         require_once 'app/controllers/AlertesController.php';
         $controller = new AlertesController($pdo);
@@ -65,6 +70,40 @@ switch ($page) {
         $controller->afficherMonDossier($userId);
         break;
 
+    case 'Faq':
+        require_once 'app/controllers/FaqController.php';
+        $controller = new FaqController($pdo);
+        $controller->FaqMonEspace($userId);
+        break;
+
+    case 'Connexion':
+        require_once 'app/controllers/ConnexionController.php';
+        $controller = new ConnexionController($pdo);
+        $controller->afficherConnexion();
+        break;
+    
+    case 'deconnexion':
+        require_once 'app/controllers/DeconnexionController.php';
+        $controller = new DeconnexionController($pdo);
+        $controller->afficherDeconnexion();
+        break;
+
+    case 'Inscription':
+        require_once 'app/controllers/InscriptionController.php';
+        $controller = new InscriptionController($pdo);
+        $controller->afficherInscription();
+        break;
+
+    case 'GererUtilisateur':
+        require_once 'app/controllers/GererUtilisateurController.php';
+        break;
+
+    case 'homepage':
+        require_once 'app/controllers/HomepageController.php';
+        $controller = new HomepageController($pdo);
+        $controller->afficherHomePage();
+        break;
+
 
     // ... autres routes comme accueil, tableau_de_bord, login, etc.
 
@@ -73,4 +112,22 @@ switch ($page) {
         break;
 }
 
+?>
+
+<!-- à ne pas toucher ce qui est dessous, je l'enlèverais après des tests-->
+<?php
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
+if (isset($_SESSION['type'])) {
+  echo '<p>Votre rôle : ' . htmlspecialchars($_SESSION['type']) . '</p>';
+} else {
+  echo '<p>Vous n\'êtes pas connecté ou votre rôle n\'est pas défini.</p>';
+}
+// Vérifie si l'utilisateur est connecté et s'il est administrateur
+if (isset($_SESSION['type']) && $_SESSION['type'] === 'Admin') {
+    echo '<a href="index.php?page=GererUtilisateur" class="btn btn-primary">Accès Administrateur</a>';
+} else {
+    echo '<p>Vous n\'avez pas les droits nécessaires pour accéder à cette section.</p>';
+}
 ?>

@@ -64,7 +64,7 @@
 
         <!-- Bouton Déconnexion -->
         <div class="logout">
-            <a href="logout.php">
+            <a href='index.php?page=deconnexion'>
                 <i class="fas fa-sign-out-alt"></i> Se déconnecter
             </a>
         </div>
