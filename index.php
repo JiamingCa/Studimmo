@@ -8,6 +8,7 @@ require_once 'config/connexion.php';
 
 
 // Simulation d'un utilisateur connecté (utilisateur avec id = 1)
+
 // if (!isset($_SESSION['user_id'])) {
 //     $_SESSION['user_id'] = 1; // Remplacez "1" par l'id réel d'un utilisateur dans votre base de données
 // }
@@ -20,8 +21,9 @@ if (isset($_SESSION['id_Utilisateur'])) {
 }
 
 
+
 // Vérification des paramètres dans l'URL (route)
-$page = isset($_GET['page']) ? $_GET['page'] : 'mon_espace'; // Par défaut, "accueil"
+$page = isset($_GET['page']) ? $_GET['page'] : 'Creer_dossier'; // Par défaut, "accueil"
 
 // Charger le contrôleur correspondant
 switch ($page) {
@@ -42,6 +44,32 @@ switch ($page) {
         $controller = new DashboardController($pdo);
         $controller->afficherTableauDeBord($userId);
         break;
+
+    case 'alertes':
+        require_once 'app/controllers/AlertesController.php';
+        $controller = new AlertesController($pdo);
+        $controller->afficherAlertes($userId);
+        break;
+
+    case 'Creer_dossier':
+        require_once 'app/controllers/Creer_dossierController.php';
+        $controller = new Creer_dossierController($pdo);
+        $controller->afficherCreer_dossier($userId);
+        break;
+
+    case 'traiter_fichiers':
+        require_once 'app/controllers/Creer_dossierController.php';
+        $controller = new Creer_dossierController($pdo);
+        $controller->traiterFichiers($userId);
+        break;
+    
+    
+    case 'mon_dossier':
+        require_once 'app/controllers/MonDossierController.php';
+        $controller = new MonDossierController($pdo);
+        $controller->afficherMonDossier($userId);
+        break;
+
     case 'Faq':
         require_once 'app/controllers/FaqController.php';
         $controller = new FaqController($pdo);
@@ -75,6 +103,7 @@ switch ($page) {
         $controller = new HomepageController($pdo);
         $controller->afficherHomePage();
         break;
+
 
     // ... autres routes comme accueil, tableau_de_bord, login, etc.
 
