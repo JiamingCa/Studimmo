@@ -38,6 +38,11 @@ switch ($page) {
         $controller = new DashboardController($pdo);
         $controller->afficherTableauDeBord($userId);
         break;
+    case 'Faq':
+        require_once 'app/controllers/FaqController.php';
+        $controller = new FaqController($pdo);
+        $controller->FaqMonEspace($userId);
+        break;
 
     // ... autres routes comme accueil, tableau_de_bord, login, etc.
 
