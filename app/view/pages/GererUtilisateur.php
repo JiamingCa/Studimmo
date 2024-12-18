@@ -1,6 +1,5 @@
 <?php
 // Connexion à la base de données
-require('app/model/connexionBase.php');
 
 // Gestion AJAX : suppression d'un utilisateur
 if (isset($_POST['action']) && $_POST['action'] === 'delete') {

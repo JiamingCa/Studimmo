@@ -9,7 +9,6 @@
 </head>
 <body>
 
-<?php require('app/model/connexionBase.php'); ?>
 <?php include("app/view/templates/header.php"); ?>
 <?php require('app/model/inscriptionfonction.php'); ?>
 <div class="login">
