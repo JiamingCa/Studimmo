@@ -57,8 +57,12 @@ switch ($page) {
         $controller = new Creer_dossierController($pdo);
         $controller->traiterFichiers($userId);
         break;
-    case 'confirmation':
-        require 'app/view/pages/confirmation.php';
+    
+    
+    case 'mon_dossier':
+        require_once 'app/controllers/MonDossierController.php';
+        $controller = new MonDossierController($pdo);
+        $controller->afficherMonDossier($userId);
         break;
 
 

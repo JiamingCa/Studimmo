@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
         xhr.open("POST", form.action, true);
         xhr.onload = function () {
             if (xhr.status === 200) {
-                window.location.href = "?page=confirmation";
+                window.location.href = "?page=mon_dossier";
             } else {
                 alert("Erreur lors de l'envoi des fichiers.");
             }
