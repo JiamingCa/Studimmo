@@ -5,7 +5,7 @@
     <nav class="nav-menu">
         <a href="trouver-logement.html" class="nav-link">Trouver un logement</a>
         <a href="publier-annonce.html" class="nav-link">Publier une annonce</a>
-        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href='index.php?page=Faq'; class="nav-link">FAQ</a>
     </nav>
     
     <a href="index.php?page=Connexion" class="inscription-button" id="inscriptionButton">Connexion</a>
