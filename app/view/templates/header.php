@@ -8,6 +8,9 @@
         <a href='index.php?page=Faq'; class="nav-link">FAQ</a>
     </nav>
     
+    <?php unset($_SESSION['redirect_url']);
+    $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];?>
+
     <a href="index.php?page=Connexion" class="inscription-button" id="inscriptionButton">Connexion</a>
     <div class="profile-avatar" id="profileAvatar" style="display: none; position: relative;">
         <img src="app/view/asset/image/default_avatar.png" alt="Avatar de profil" class="avatar-img" id="profileAvatarImg" style="cursor: pointer;">
@@ -20,7 +23,7 @@
             <a href='index.php?page=mon_espace' class="dropdown-item">
                 <i class="bi bi-wallet"></i> Mon Espace
             </a>
-            <a href='index.php?page=compte' class="dropdown-item">
+            <a href='index.php?page=profils' class="dropdown-item">
                 <i class="fas fa-user icon"></i> Mon Compte
             </a>
             <a href='index.php?page=mon_dossier' class="dropdown-item">

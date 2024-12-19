@@ -133,6 +133,7 @@ switch ($page) {
         
 
     case 'Faq':
+        
         require_once 'app/controllers/FaqController.php';
         $controller = new FaqController($pdo);
         $controller->afficherFaq();
@@ -172,6 +173,12 @@ switch ($page) {
         $controller = new HomepageController($pdo);
         $controller->afficherHomePage();
         break;
+        
+    case 'annonce':
+        require_once 'app/controllers/AnnonceController.php';
+        $controller = new AnnonceController($pdo);
+        $controller->afficherAnnonce();
+        break;
 
 
     // ... autres routes comme accueil, tableau_de_bord, login, etc.
@@ -183,20 +190,3 @@ switch ($page) {
 
 ?>
 
-<!-- à ne pas toucher ce qui est dessous, je l'enlèverais après des tests-->
-<?php
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
-if (isset($_SESSION['type'])) {
-  echo '<p>Votre rôle : ' . htmlspecialchars($_SESSION['type']) . '</p>';
-} else {
-  echo '<p>Vous n\'êtes pas connecté ou votre rôle n\'est pas défini.</p>';
-}
-// Vérifie si l'utilisateur est connecté et s'il est administrateur
-if (isset($_SESSION['type']) && $_SESSION['type'] === 'Admin') {
-    echo '<a href="index.php?page=GererUtilisateur" class="btn btn-primary">Accès Administrateur</a>';
-} else {
-    echo '<p>Vous n\'avez pas les droits nécessaires pour accéder à cette section.</p>';
-}
-?>

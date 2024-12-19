@@ -14,10 +14,16 @@
 <body>
     <?php include 'app/view/templates/header.php'; ?>
 
+    <div class="titre">
+        <a href='index.php?page=mon_espace' class="back-button">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <t1>Mon Dossier</t1>
+    </div>
+
     <div class="dossier-visualisation-wrapper">
         <!-- Titre principal -->
         <div class="header-section">
-            <h1 class="title">Mon Dossier</h1>
             <p class="subtitle">Voici les fichiers que vous avez téléchargés pour votre dossier.</p>
         </div>
 

@@ -43,8 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($stmt->execute()) {
             // Redirige l'utilisateur vers la page de connexion après l'inscription
-            $redirectUrl = isset($_GET['redirect_url']) ? $_GET['redirect_url'] : 'index.php';
-            header("Location: index.php?page=Connexion&redirect_url=" . urlencode($redirectUrl));
+            
+            echo "redirect_url : " . htmlspecialchars($_SESSION['redirect_url']);
+            header("Location: index.php?page=Connexion" );
             exit();
             exit;
         } else {
