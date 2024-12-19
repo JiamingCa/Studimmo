@@ -9,8 +9,8 @@
 </head>
 <body>
 <header>
-    <a href="homepage.html" class="logo-link">
-        <img src="Logo_studimmo.png" alt="Logo de STUDIMMO" class="logo">
+    <a href="Accueil.php" class="logo-link">
+        <img src="./img/Logo_studimmo.png" alt="Logo de STUDIMMO" class="logo">
     </a>
     <nav class="nav-menu">
         <a href="trouver-logement.html" class="nav-link">Trouver un logement</a>
@@ -20,7 +20,7 @@
     
     <a href="inscription.html" class="inscription-button" id="inscriptionButton">S’inscrire</a>
     <div class="profile-avatar" id="profileAvatar" style="display: none;">
-        <img src="default_avatar.png" alt="Avatar de profil" class="avatar-img">
+        <img src="img/default_avatar.png" alt="Avatar de profil" class="avatar-img">
         <div class="profile-icons" id="profileIcons" style="display: flex;">
             <i href="favoris.php" class="bi bi-heart"></i>
             <i href="message.php" class="bi bi-chat"></i>
@@ -31,30 +31,24 @@
 </header>
 <script src="header.js"></script>
 
+<div class ="slider-container">
   <section class="hero">
-    <div class="image-slider">
-      <h1>Votre clé pour un logement étudiant idéal</h1>
-        <p>Trouvez rapidement des milliers d'annonces de logements pour étudiants.</p>
-        <div class="search-container">
-          <input type="text" id="searchInput" placeholder="Recherchez par ville, code postal ou département">
-          <button id="searchButton">Rechercher</button>
-          <ul id="searchSuggestions" class="suggestions-list"></ul>
-        </div>
-
-        <div class="slides">
-          <img src="img/Paris.jpg">
-          <img src="img/Lyon.jpg">
-        </div>
+    <div class="slider">
+      <img src="./img/Paris.png" alt="Paris">
+      <img src="./img/Lyon.png" alt="Lyon">
     </div>
-    
+    <h1>Votre clé pour un logement étudiant idéal</h1>
+    <p>Trouvez rapidement des milliers d'annonces de logements pour étudiants.</p>
+    <div class="search-container">
+      <!-- Formulaire de recherche -->
+      <form action="PRL.php" method="GET">
+        <input type="text" id="searchInput" name="location" placeholder="Recherchez par ville, code postal ou département" required>
+        <button type="submit" id="searchButton">Rechercher</button>
+      </form>
+      <ul id="searchSuggestions" class="suggestions-list"></ul>
+    </div>
   </section>
-
-  <div class="image-slider">
-      <div class="slides">
-        <img src="Paris.jpg">
-        <img src="Lyon.jpg">
-      </div>
-  </div>
+</div>
 
   <section class="features">
     <div class="feature">
@@ -83,7 +77,7 @@
     <!-- Top Section -->
     <div class="top-footer">
       <div class="logo">
-        <img src="Logo_studimmo.png" alt="Logo">
+        <img src="/img/Logo_studimmo.png" alt="Logo">
       </div>
       <div class="socials">
         <p>Retrouvez-nous sur ...</p>
@@ -109,8 +103,8 @@
       <div class="column">
         <h3>Liens</h3>
         <ul>
-          <li><a href="Page_Accueil.php">Page d'accueil</a></li>
-          <li><a href="#">Rechercher un logement</a></li>
+          <li><a href="Accueil.php">Page d'accueil</a></li>
+          <li><a href="PRL.php">Rechercher un logement</a></li>
           <li><a href="#">Publier un logement</a></li>
           <li><a href="#">Profil</a></li>
           <li><a href="#">FAQ</a></li>

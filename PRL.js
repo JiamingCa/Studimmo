@@ -59,3 +59,18 @@ locationInput.addEventListener('input', debounce(async () => {
     }
   }
 }, 300)); // Délai de 300 ms entre deux requêtes
+
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleButtons = document.querySelectorAll('.toggle-button');
+
+  toggleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const inputContainer = button.nextElementSibling;
+      if (inputContainer.classList.contains('show')) {
+        inputContainer.classList.remove('show');
+      } else {
+        inputContainer.classList.add('show');
+      }
+    });
+  });
+});

@@ -2,6 +2,7 @@
 const searchInput = document.querySelector('#searchInput');
 const searchSuggestions = document.querySelector('#searchSuggestions');
 const filterContainer = document.querySelector('#filterContainer'); // Conteneur pour les filtres sélectionnés
+const resultsContainer = document.querySelector('#resultsContainer'); // Conteneur pour les résultats de recherche (à ajouter dans votre HTML)
 
 // Fonction debounce pour limiter les appels API
 function debounce(func, delay) {
@@ -12,11 +13,13 @@ function debounce(func, delay) {
   };
 }
 
-// Fonction pour créer un élément de suggestion
+// Fonction pour créer un élément de suggestion (modifié pour ajouter un bouton)
 function createSuggestionItem(label, type, color = 'black') {
   const li = document.createElement('li');
-  li.innerHTML = `<strong>${label}</strong> <small>(${type})</small>`;
-  li.style.color = color;
+  li.innerHTML = `
+    <button class="suggestion-button" style="color: ${color};">
+      <strong>${label}</strong> <small>(${type})</small>
+    </button>`;
   return li;
 }
 
@@ -102,13 +105,53 @@ async function fetchSuggestions() {
   }
 }
 
-// Écoute de l'événement input avec debounce
-searchInput.addEventListener('input', debounce(fetchSuggestions, 300));
+// Fonction pour effectuer la recherche de logements
+async function fetchHousingResults(query) {
+  try {
+    const response = await fetch(`Search.php?query=${encodeURIComponent(query)}`);
+    resultsContainer.innerHTML = ''; // Réinitialiser les résultats
 
-// Gestion de la sélection d'une suggestion
+    if (response.ok) {
+      const results = await response.json();
+
+      if (results.length > 0) {
+        results.forEach((result) => {
+          const resultItem = document.createElement('div');
+          resultItem.className = 'result-item';
+          resultItem.innerHTML = `
+            <div>
+              <h3>${result.titre}</h3>
+              <p>${result.description}</p>
+              <p><strong>Localisation :</strong> ${result.localisation}</p>
+              <p><strong>Prix :</strong> ${result.prix} €</p>
+            </div>
+            <img src="${result.image_url}" alt="${result.titre}">
+          `;
+          resultsContainer.appendChild(resultItem);
+        });
+      } else {
+        resultsContainer.innerHTML = '<p>Aucun logement trouvé pour cette localisation.</p>';
+      }
+    } else {
+      resultsContainer.innerHTML = '<p>Erreur lors de la recherche des logements.</p>';
+    }
+  } catch (error) {
+    console.error('Erreur lors de la recherche des logements :', error);
+    resultsContainer.innerHTML = '<p>Erreur de connexion au serveur.</p>';
+  }
+}
+
+// Gestion de la sélection d'une suggestion (modifié pour fonctionner avec les boutons)
 searchSuggestions.addEventListener('click', (event) => {
-  if (event.target.tagName === 'LI') {
-    const selectedText = event.target.textContent;
+  const button = event.target.closest('.suggestion-button');
+  if (button) {
+    const selectedText = button.querySelector('strong').textContent.trim();
+
+    // Insérer la suggestion dans la barre de recherche
+    searchInput.value = selectedText;
+
+    // Efface les suggestions après sélection
+    searchSuggestions.innerHTML = '';
 
     // Vérifie si le filtre existe déjà
     const existingFilters = Array.from(filterContainer.children).map((filter) => filter.textContent.replace('×', '').trim());
@@ -117,48 +160,10 @@ searchSuggestions.addEventListener('click', (event) => {
       filterContainer.appendChild(filter);
     }
 
-    searchInput.value = ''; // Réinitialise le champ de recherche
-    searchSuggestions.innerHTML = ''; // Efface les suggestions après sélection
+    // Lancer la recherche pour la localisation sélectionnée
+    fetchHousingResults(selectedText);
   }
 });
 
-// Slider
-const slider = document.querySelector('.slider');
-const slides = document.querySelectorAll('.slide');
-const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
-
-let currentIndex = 0; // Index de l'image actuelle
-
-// Fonction pour afficher le slide actif
-function showSlide(index) {
-  // Réinitialiser tous les slides
-  slides.forEach((slide) => {
-    slide.classList.remove('active');
-  });
-
-  // Ajouter la classe active au slide correspondant
-  slides[index].classList.add('active');
-}
-
-// Fonction pour passer au slide suivant
-function nextSlide() {
-  currentIndex = (currentIndex + 1) % slides.length; // Revenir au premier slide après le dernier
-  showSlide(currentIndex);
-}
-
-// Fonction pour revenir au slide précédent
-function prevSlide() {
-  currentIndex = (currentIndex - 1 + slides.length) % slides.length; // Revenir au dernier slide avant le premier
-  showSlide(currentIndex);
-}
-
-// Ajouter les événements pour les boutons
-nextButton.addEventListener('click', nextSlide);
-prevButton.addEventListener('click', prevSlide);
-
-// Afficher le premier slide au chargement
-showSlide(currentIndex);
-
-// Optionnel : Défilement automatique
-setInterval(nextSlide, 5000); // Change toutes les 5 secondes
+// Écoute de l'événement input avec debounce
+searchInput.addEventListener('input', debounce(fetchSuggestions, 300));

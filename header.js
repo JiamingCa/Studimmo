@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
        
 
         // Optionnel : définir l'image de profil de l'utilisateur si disponible
-        profileAvatar.querySelector('img').src = "default_avatar.png"; // Remplacez par l'URL de l'image réelle
+        profileAvatar.querySelector('img').src = "img/default_avatar.png"; // Remplacez par l'URL de l'image réelle
     } else {
         // Assurer que le bouton d'inscription est visible si l'utilisateur n'est pas connecté
         inscriptionButton.style.display = 'block';

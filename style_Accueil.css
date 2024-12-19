@@ -1,29 +1,4 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
-  }
-
-
-  .logo-button {
-    padding: 0; 
-    margin: 0; 
-    border: none; 
-    background: none; 
-    overflow: hidden;
-    display: flex;
-    justify-content: flex-start;
-  }
-  .logo-button img:hover {
-    cursor: pointer;
-    
-  }
-
- 
-
-/* Reset et box-sizing */
+/* RESET */
 *,
 *::before,
 *::after {
@@ -32,8 +7,13 @@ body {
     box-sizing: border-box;
 }
 
-body, html {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+/* Global Styles */
+body {
+    font-family: Verdana,    sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
     height: 100vh;
 }
 
@@ -42,27 +22,23 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(0deg,#AFC1FF 67%, #BFC2CD 100%);
+    background: linear-gradient(0deg, #AFC1FF 67%, #BFC2CD 100%);
     padding: 10px 20px;
     width: 100%;
-    height: 150px; /* Ajusté pour une hauteur plus standard */
+    height: 150px;
     position: relative;
 }
 
-/* Logo */
 .logo-link {
-    display: inline-block;
     text-decoration: none;
 }
 
 .logo {
-    height: 150px; /* Taille de base */
-    max-height: 150%;
+    height: 100%;
     width: auto;
     cursor: pointer;
 }
 
-/* Menu de navigation */
 .nav-menu {
     display: flex;
     gap: 30px;
@@ -82,7 +58,6 @@ header {
     color: #7c7c7c;
 }
 
-/* Bouton d'inscription */
 .inscription-button {
     text-decoration: none;
     color: white;
@@ -101,10 +76,8 @@ header {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Avatar pour l'utilisateur connecté */
 .profile-avatar {
     align-self: center;
-    
 }
 
 .avatar-img {
@@ -121,123 +94,157 @@ header {
     gap: 5px;
 }
 
-/* Style des icônes */
 .profile-icons i {
     font-size: 18px;
     cursor: pointer;
-    color: rgb(66 66 66); 
-    
+    color: rgb(66 66 66);
 }
 
-
-/* Menu burger pour mobile */
+/* Burger Menu */
 .burger-menu {
     color: white;
     font-size: calc(24px + 0.5vw);
     cursor: pointer;
-    display: none; /* Masqué par défaut */
+    display: none;
 }
 
-/* Media Query pour les petits écrans */
-@media (max-width: 690px) {
-    /* Votre media query existante */
-}
-
-  .hero {
+/* Hero Section */
+.hero {
     text-align: center;
-    padding: 4rem 1rem;
-    background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
     color: white;
     background-size: cover;
+    background-position: center;
     position: relative;
-  }
+    overflow: hidden;
+    animation: slideBackground 10s infinite linear;
+    z-index: 1;
+}
 
-  .hero::after {
+.slider {
+    display: flex;
+    z-index: -1;
+}
+
+.slider img {
+    width: 1200px;
+    animation-duration: 10s;
+    animation-name: slider;
+    animation-iteration-count: infinite;
+    z-index: -1;
+}
+
+.slider-container {
+    display: flex;
+    overflow: auto;
+    width: 55%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 75%;
+}
+
+@keyframes slider {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-1200px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.hero::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
     z-index: 1;
-  }
+}
 
-  .hero h1 {
+.hero h1 {
     z-index: 2;
     position: relative;
     font-size: 3rem;
     margin: 0;
-  }
+}
 
-  .hero p {
+.hero p {
     z-index: 2;
     position: relative;
     margin: 1rem 0 2rem;
-  }
+}
 
-  .hero .search-container {
-    z-index: 2;
+.hero .search-container {
+    z-index: 300;
     position: relative;
     display: flex;
     justify-content: center;
-  }
+    margin-bottom: 100px;
+}
 
-  .hero input[type="text"] {
+.hero input[type="text"] {
     padding: 1rem;
     width: 300px;
     border: none;
     border-radius: 5px 0 0 5px;
     font-size: 1rem;
-  }
+    z-index: 20;
+}
 
-  .hero button {
+.hero button {
     padding: 1rem;
     border: none;
     border-radius: 0 5px 5px 0;
-    background-color: #ffdd59;
+    background-color: #7188cd;
     font-size: 1rem;
     cursor: pointer;
-  }
+}
 
-  .hero button:hover {
+.hero button:hover {
     background-color: #e8c43c;
-  }
+}
 
-  .features {
+/* Features Section */
+.features {
     display: flex;
     justify-content: space-around;
     padding: 2rem 1rem;
     background-color: #fff;
-  }
+    z-index: 2;
+}
 
-  .feature {
+.feature {
     text-align: center;
     max-width: 300px;
-  }
+}
 
-  .feature i {
+.feature i {
     font-size: 3rem;
     color: #007AFF;
     margin-bottom: 1rem;
-  }
+}
 
-  .feature h3 {
+.feature h3 {
     margin-bottom: 0.5rem;
-  }
+}
 
-  .cta {
+/* Call-to-Action Section */
+.cta {
     text-align: center;
     padding: 2rem 1rem;
-    background: linear-gradient(90deg, #ffdd59, #ffc300);
+    background: #fff;
     color: white;
-  }
+}
 
-  .cta h2 {
+.cta h2 {
     margin-bottom: 1rem;
-  }
+}
 
-  .cta button {
+.cta button {
     padding: 1rem 2rem;
     background-color: white;
     color: #007AFF;
@@ -247,231 +254,216 @@ header {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
+}
 
-  .cta button:hover {
+.cta button:hover {
     background-color: #f0f0f0;
-  }
+}
 
-  footer {
-    background-color: #000; /* Fond noir */
-    color: #fff; /* Texte blanc */
+/* Footer */
+footer {
+    background-color: #000;
+    color: #fff;
     padding: 0px 20px 20px 20px;
     font-family: Arial, sans-serif;
-  }
-  
-  .top-footer {
+}
+
+/* Top Footer */
+.top-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  .logo img {
+}
+
+.logo img {
     max-height: 120px;
     width: auto;
     background-color: #e2f1ffdb;
     border-radius: 30px;
     margin-top: 20px;
-  }
-  
-  .socials {
-    text-align: left; 
-    
-  }
-  
-  .socials p {
+}
+
+.socials {
+    text-align: left;
+}
+
+.socials p {
     margin: 0;
     font-size: 14px;
-    color: #bbb; /* Couleur du texte gris clair */
-  }
-  
-  .socials .icons {
+    color: #bbb;
+}
+
+.socials .icons {
     margin-top: 5px;
-  }
-  
-  .socials .icons a {
+}
+
+.socials .icons a {
     color: #fff;
     margin-right: 15px;
     text-decoration: none;
-    font-size: 24px; /* Agrandir les icônes */
-    transition: color 0.3s ease; /* Animation */
-  }
-  
-  .socials .icons a:hover {
-    color: #ccc; /* Changement générique de couleur */
-  }
-  
-  .socials .icons a:hover .fa-youtube {
-    color: #FF0000; /* Couleur rouge pour YouTube */
-  }
-  
-  .socials .icons a:hover .fa-facebook-f {
-    color: #1877F2; /* Couleur bleue pour Facebook */
-  }
-  
-  .socials .icons a:hover .fa-instagram {
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.socials .icons a:hover {
+    color: #ccc;
+}
+
+.socials .icons a:hover .fa-youtube {
+    color: #FF0000;
+}
+
+.socials .icons a:hover .fa-facebook-f {
+    color: #1877F2;
+}
+
+.socials .icons a:hover .fa-instagram {
     background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* Applique le dégradé au texte */
-  }
-  
-  .socials .icons a:hover .fa-linkedin-in {
-    color: #0077B5; /* Couleur bleue pour LinkedIn */
-  }
-  
-  .socials .icons a:hover .fa-tiktok {
+    -webkit-text-fill-color: transparent;
+}
+
+.socials .icons a:hover .fa-linkedin-in {
+    color: #0077B5;
+}
+
+.socials .icons a:hover .fa-tiktok {
     background: linear-gradient(100deg, #c6f9fc, #ffffff, #ffb7c5);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* Applique le dégradé au texte */
-  }
-  
-  hr {
+    -webkit-text-fill-color: transparent;
+}
+
+hr {
     border: none;
-    border-top: 1px solid #fff; /* Ligne blanche fine */
+    border-top: 1px solid #fff;
     margin: 20px 0;
-  }
-  
-  /* Bottom Section */
-  .bottom-footer {
+}
+
+/* Bottom Footer */
+.bottom-footer {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; /* Réorganise en petits écrans */
-  }
-  
-  .column {
+    flex-wrap: wrap;
+}
+
+.column {
     flex: 1;
     margin: 0 10px;
-    max-width: 200px; /* Réduit l'espacement */
-  }
-  
-  .column h3 {
+    max-width: 200px;
+}
+
+.column h3 {
     font-size: 16px;
     text-transform: uppercase;
     margin-bottom: 10px;
-  }
-  
-  .column ul {
+}
+
+.column ul {
     list-style: none;
     padding: 0;
-  }
-  
-  .column ul li {
+}
+
+.column ul li {
     font-size: 14px;
     margin-bottom: 5px;
-  }
-  
-  .column ul li a {
+}
+
+.column ul li a {
     color: #fff;
     text-decoration: none;
-  }
-  
-  .column ul li a:hover {
+}
+
+.column ul li a:hover {
     text-decoration: underline;
-  }
-  
-  /* Site Description Section */
-  .site-description {
+}
+
+/* Site Description Section */
+.site-description {
     flex: 1;
     margin: 0 10px;
-    max-width: 203px; /* Réduit l'espacement */
-  }
-  
-  .site-description h3 {
+    max-width: 203px;
+}
+
+.site-description h3 {
     font-size: 16px;
     text-transform: uppercase;
     margin-bottom: 10px;
-  }
-  
-  /* Support and Location Section */
-  .support-location {
+}
+
+/* Support and Location Section */
+.support-location {
     display: flex;
-    justify-content: center; /* Centrer les deux sections */
-    gap: 50px; /* Espacement entre les deux */
+    justify-content: center;
+    gap: 50px;
     margin-top: 20px;
-  }
-  
-  .support, .location {
+}
+
+.support,
+.location {
     flex: 1;
     text-align: center;
-  }
-  
-  .support h3, .location h3 {
+}
+
+.support h3,
+.location h3 {
     font-size: 16px;
     margin-bottom: 5px;
-  }
-  
-  .support p, .location p, .site-description p {
+}
+
+.support p,
+.location p,
+.site-description p {
     font-size: 14px;
     margin-bottom: 5px;
-  }
-  
-  .support a, .location a {
+}
+
+.support a,
+.location a {
     color: #00aced;
     text-decoration: none;
-  }
-  
-  .support a:hover, .location a:hover {
+}
+
+.support a:hover,
+.location a:hover {
     text-decoration: underline;
-  }
-  
-  /* Mentions légales */
-  .legal-links {
+}
+
+/* Legal Links */
+.legal-links {
     text-align: center;
     margin-top: 15px;
     font-size: 12px;
     color: #bbb;
-  }
-  
-  .legal-links a {
+}
+
+.legal-links a {
     color: #bbb;
     text-decoration: none;
-  }
-  
-  .legal-links a:hover {
+}
+
+.legal-links a:hover {
     color: #fff;
     text-decoration: underline;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
     .top-footer {
-      align-items: flex-start;
+        align-items: flex-start;
     }
-  
-    
-  
+
     .bottom-footer {
-      align-items: center;
+        align-items: center;
     }
-  
+
     .support-location {
-      align-items: center;
+        align-items: center;
     }
-  
-    .support, .location {
-      margin-bottom: 20px;
+
+    .support,
+    .location {
+        margin-bottom: 20px;
     }
-  }
-
-
-.search-container {
-  position: relative;
-  max-width: 600px;
-  margin: 20px auto;
-}
-
-#searchInput {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  outline: none;
-  box-sizing: border-box;
-}
-
-#searchInput:focus {
-  border-color: #007BFF;
 }
 
 .suggestions-list {
@@ -487,7 +479,7 @@ header {
   border-top: none;
   max-height: 300px;
   overflow-y: auto;
-  z-index: 10;
+  z-index: 20;
   display: none; /* Cacher initialement */
 }
 
@@ -527,44 +519,19 @@ header {
   display: block;
 }
 
-/* Carrousel */
-.image-slider {
-  position: relative;
-  overflow: hidden;
-  margin-top: 20px; /* Pour séparer du bouton rechercher */
-  margin-left: auto; /* Centrer horizontalement */
-  margin-right: auto; /* Centrer horizontalement */
-}
-
-.slides {
-  display: flex;
-  width: 300%; /* Trois images côte à côte (chaque image occupe 1/3 de la largeur) */
-  animation: slide 10s infinite; /* Animation de défilement automatique */
-}
-
-.slides img {
-  width: 100%; /* Chaque image occupe un tiers de la largeur de .slides (donc 400px chacune) */
-  object-fit: cover; /* Assure que les images sont bien recadrées sans déformation */
-}
-
-/* Animation de défilement */
-@keyframes slide {
-  0% {
-    transform: translateX(0);
+.suggestion-button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    color: inherit; 
   }
-  25% {
-    transform: translateX(-33.33%); /* Déplacer les images vers la gauche */
+  
+  .suggestion-button:hover {
+    background-color: #fff; /* Couleur de survol */
   }
-  50% {
-    transform: translateX(-66.66%); /* Déplacer encore plus vers la gauche */
-  }
-  75% {
-    transform: translateX(-100%); /* Réinitialiser au début après un tour complet */
-  }
-  100% {
-    transform: translateX(0); /* Revenir à la position initiale */
-  }
-}
-
-
   
