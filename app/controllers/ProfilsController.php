@@ -35,5 +35,24 @@ class ProfilsController {
             exit;
         }
     }
+
+    public function modifier($userId) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Récupérer les données envoyées via le formulaire
+            $nom = $_POST['nom'] ?? '';
+            $prenom = $_POST['prenom'] ?? '';
+            $email = $_POST['email'] ?? '';
+            $telephone = $_POST['telephone'] ?? '';
+            $mot_de_passe = $_POST['mot_de_passe'] ?? '';
+
+
+            // Mettre à jour les informations dans la base de données
+            updateUsers($this->pdo, $nom, $prenom, $email, $telephone, $userId);
+
+            // Rediriger vers la page de profil pour refléter les modifications
+            header('Location: index.php?page=profils');
+            exit;
+        }
+    }
 }
 ?>

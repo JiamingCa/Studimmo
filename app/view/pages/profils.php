@@ -61,13 +61,16 @@
 
     <div class="profile-container">
         <div class="profile-title">Sécurité</div>
-        <div class="profile-grid">
-            <div class="profile-item">
-                <label for="mot_de_passe">Mot de passe</label>
-                <input type="text" id="mot_de_passe" value="<?php echo htmlspecialchars($utilisateur['mot_de_passe']); ?>" disabled> <br><br>
+        <form action="index.php?page=profils&action=modifier_securite" method="POST" id="securityForm">
+            <div class="profile-grid">
+                <div class="profile-item">
+                    <label for="mot_de_passe">Mot de passe</label>
+                    <input type="password" id="mot_de_passe" name="mot_de_passe" value="<?php echo htmlspecialchars($utilisateur['mot_de_passe']); ?>" disabled> <br><br>
+                </div>
             </div>
-            <button class="edit-button" disabled>Modifier le mot de passe</button>
-        </div>
+            <button type="button" id="editSecurityButton" class="edit-button">Modifier</button>
+            <button type="submit" id="saveSecurityButton" class="edit-button hidden">Enregistrer</button>
+        </form>
     </div>
 
     <?php include 'app/view/templates/footer.php'; ?>
@@ -76,9 +79,16 @@
 <script>
     document.getElementById('editButton').addEventListener('click', function() {
         const fields = document.querySelectorAll('#profileForm input');
-        fields.forEach(field => field.disabled = false); // Activer les champs
-        document.getElementById('editButton').classList.add('hidden'); // Cacher le bouton "Modifier"
-        document.getElementById('saveButton').classList.remove('hidden'); // Afficher le bouton "Enregistrer"
+        fields.forEach(field => field.disabled = false); 
+        document.getElementById('editButton').classList.add('hidden'); 
+        document.getElementById('saveButton').classList.remove('hidden'); 
+    });
+
+    document.getElementById('editSecurityButton').addEventListener('click', function() {
+        const securityFields = document.querySelectorAll('#securityForm input');
+        securityFields.forEach(field => field.disabled = false); 
+        document.getElementById('editSecurityButton').classList.add('hidden'); 
+        document.getElementById("saveSecurityButton").classList.remove('hidden'); 
     });
 </script>
 
