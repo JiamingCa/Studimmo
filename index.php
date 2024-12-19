@@ -23,7 +23,7 @@ if (isset($_SESSION['id_Utilisateur'])) {
 
 
 // Vérification des paramètres dans l'URL (route)
-$page = isset($_GET['page']) ? $_GET['page'] : 'favoris'; // Par défaut, "accueil"
+$page = isset($_GET['page']) ? $_GET['page'] : 'homepage'; // Par défaut, "accueil"
 
 // Charger le contrôleur correspondant
 switch ($page) {
