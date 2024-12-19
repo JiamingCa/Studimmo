@@ -63,15 +63,49 @@
         <div class="profile-title">Sécurité</div>
         <form action="index.php?page=profils&action=modifier_securite" method="POST" id="securityForm">
             <div class="profile-grid">
+                <!-- Champ pour le nouveau mot de passe -->
                 <div class="profile-item">
-                    <label for="mot_de_passe">Mot de passe</label>
-                    <input type="password" id="mot_de_passe" name="mot_de_passe" value="<?php echo htmlspecialchars($utilisateur['mot_de_passe']); ?>" disabled> <br><br>
+                    <label for="new_password">Nouveau mot de passe</label>
+                    <div style="position: relative;">
+                        <input 
+                            type="password" 
+                            id="new_password" 
+                            name="new_password" 
+                            placeholder="Nouveau mot de passe" 
+                            required>
+                        <i class="fas fa-eye toggle-password" data-target="new_password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                    </div>
+                    <small id="new_password_error" class="error-message"></small>
+                </div>
+
+                <!-- Champ pour confirmer le mot de passe -->
+                <div class="profile-item">
+                    <label for="confirm_password">Confirmer le mot de passe</label>
+                    <div style="position: relative;">
+                        <input 
+                            type="password" 
+                            id="confirm_password" 
+                            name="confirm_password" 
+                            placeholder="Confirmez le mot de passe" 
+                            required>
+                        <i class="fas fa-eye toggle-password" data-target="confirm_password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                    </div>
+                    <small id="confirm_password_error" class="error-message"></small>
                 </div>
             </div>
-            <button type="button" id="editSecurityButton" class="edit-button">Modifier</button>
-            <button type="submit" id="saveSecurityButton" class="edit-button hidden">Enregistrer</button>
+            <button type="submit" id="saveSecurityButton" class="edit-button">Enregistrer</button>
         </form>
     </div>
+
+    <style>
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            display: none; /* Masqué par défaut */
+        }
+    </style>
+
+
 
     <?php include 'app/view/templates/footer.php'; ?>
 </main>
@@ -84,12 +118,55 @@
         document.getElementById('saveButton').classList.remove('hidden'); 
     });
 
-    document.getElementById('editSecurityButton').addEventListener('click', function() {
-        const securityFields = document.querySelectorAll('#securityForm input');
-        securityFields.forEach(field => field.disabled = false); 
-        document.getElementById('editSecurityButton').classList.add('hidden'); 
-        document.getElementById("saveSecurityButton").classList.remove('hidden'); 
+    // Gestion de l'icône œil pour afficher/masquer le mot de passe
+    document.querySelectorAll('.toggle-password').forEach(icon => {
+        icon.addEventListener('click', function () {
+            const targetInput = document.getElementById(this.dataset.target);
+            if (targetInput.type === 'password') {
+                targetInput.type = 'text';
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+            } else {
+                targetInput.type = 'password';
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+            }
+        });
     });
+
+    // Validation des mots de passe
+    document.getElementById('securityForm').addEventListener('submit', function (event) {
+        const newPassword = document.getElementById('new_password').value;
+        const confirmPassword = document.getElementById('confirm_password').value;
+        const errorNewPassword = document.getElementById('new_password_error');
+        const errorConfirmPassword = document.getElementById('confirm_password_error');
+
+        // Réinitialiser les messages d'erreur
+        errorNewPassword.style.display = 'none';
+        errorConfirmPassword.style.display = 'none';
+
+        let isValid = true;
+
+        // Vérifiez la complexité du mot de passe
+        if (newPassword.length < 8) {
+            errorNewPassword.textContent = 'Le mot de passe doit comporter au moins 8 caractères.';
+            errorNewPassword.style.display = 'block';
+            isValid = false;
+        }
+
+        // Vérifiez que les mots de passe correspondent
+        if (newPassword !== confirmPassword) {
+            errorConfirmPassword.textContent = 'Les mots de passe ne correspondent pas.';
+            errorConfirmPassword.style.display = 'block';
+            isValid = false;
+        }
+
+        if (!isValid) {
+            event.preventDefault(); // Empêcher l'envoi du formulaire
+        }
+    });
+
+
 </script>
 
 </body>

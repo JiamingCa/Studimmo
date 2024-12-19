@@ -45,7 +45,6 @@
     gap: 30px; /* Ajoute un espace entre les blocs */
     justify-content: center; /* Centre les blocs horizontalement */
     align-items: center; /* Aligne les blocs en haut */
-    flex-wrap: wrap; /* Permet de passer à une nouvelle ligne si nécessaire */
     flex: 1; /* Permet aux blocs de prendre la même largeur */
     min-width: 600px; /* Définit une largeur minimale pour les blocs */
     max-width: 1100px; /* Définit une largeur maximale pour éviter qu'ils ne soient trop larges */
