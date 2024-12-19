@@ -27,14 +27,17 @@
             </div>
 
             <!-- Carte Mes alertes -->
-            <div class="card" onclick="location.href='index.php?page=alerte';">
+            <div class="card" onclick="location.href='index.php?page=alertes';">
                 <i class="fas fa-bell icon"></i>
                 <h2>Mes alertes</h2>
                 <p>Gérer vos recherches sauvegardées</p>
             </div>
 
+
+
             <!-- Carte Mes candidatures -->
-            <div class="card" onclick="location.href='index.php?page=candidature';">
+            <div class="card" onclick="location.href='index.php?page=mon_dossier';">
+
                 <i class="fas fa-folder icon"></i>
                 <h2>Candidature</h2>
                 <p>Compléter votre profil</p>
@@ -64,7 +67,7 @@
 
         <!-- Bouton Déconnexion -->
         <div class="logout">
-            <a href="logout.php">
+            <a href='index.php?page=deconnexion'>
                 <i class="fas fa-sign-out-alt"></i> Se déconnecter
             </a>
         </div>

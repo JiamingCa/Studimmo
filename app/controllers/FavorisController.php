@@ -1,34 +1,39 @@
 <?php
 // app/controllers/FavorisController.php
 require_once 'app/model/FavorisModel.php';
+require_once 'app/model/AnnonceModel.php';
 
 class FavorisController {
     private $FavorisModel;
 
+    public function __construct($pdo) {
+        $this->FavorisModel = new FavorisModel($pdo);
+    }
+
     public function afficherFavoris($userId, $tri = 'recent', $page = 1, $parPage = 10) {
-        // Vérifiez que $userId est valide
         if (!$userId) {
             die("Utilisateur non identifié.");
         }
     
-        // Récupérer les annonces favorites
+        // Récupérer les annonces avec l'état des favoris
         $annonces = $this->FavorisModel->getFavorisByUser($userId, $tri, $page, $parPage);
-    
-        // Compter le nombre total d'annonces
         $nombreFavoris = $this->FavorisModel->countFavorisByUser($userId);
     
-        // Vérifiez les résultats
-        if (!isset($nombreFavoris)) {
-            $nombreFavoris = 0;
-        }
-    
-        // Charger la vue
+        // Passer les annonces à la vue
         include 'app/view/pages/favoris.php';
     }
-    
-    public function supprimerFavori($userId, $idAnnonce) {
+
+    public function toggleFavori($userId, $idAnnonce, $action) {
+    if ($action === 'add') {
+        $this->FavorisModel->addFavori($userId, $idAnnonce);
+    } elseif ($action === 'remove') {
         $this->FavorisModel->deleteFavori($userId, $idAnnonce);
-        header("Location: index.php?page=favoris"); // Redirige vers la page des favoris
     }
+
+    
 }
+
+    
+}
+
 ?>

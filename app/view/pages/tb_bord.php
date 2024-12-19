@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="app/view/asset/css/tb_bord.css">
     <link rel="stylesheet" href="app/view/asset/css/footer.css">
     <link rel="stylesheet" href="app/view/asset/css/header.css">
+    <link rel="stylesheet" href="app/view/asset/css/template.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
 </head>
@@ -118,7 +119,13 @@
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p>Aucune annonce trouvée.</p>
+                <div class="annonces-empty">
+                    <div class="animation-container">
+                        <i class="bi bi-house-x"></i>
+                    </div>
+                    <p class="empty-text">Vous n'avez encore ajouté aucune annonce.</p>
+                    <button class="create-annonce-button" onclick="window.location.href='index.php?page=creer_annonce'">Créer une annonce</button>
+                </div>
             <?php endif; ?>
         </div>
     </div>

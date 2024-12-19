@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `studimmo`.`utilisateur` (
   `nom` VARCHAR(45) NOT NULL,
   `prenom` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `mot_de_passe` VARCHAR(45) NOT NULL,
+  `mot_de_passe` VARCHAR(255) NOT NULL,
   `telephone` INT NOT NULL,
   `photo` VARCHAR(45) NULL,
   `type` ENUM('Locataire', 'Propriétaire', 'Admin') NOT NULL,
