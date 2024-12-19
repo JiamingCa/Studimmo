@@ -438,7 +438,9 @@ body {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: auto;
+  margin: 0 auto;
+  max-height: 303px;
+  object-fit: contain;
 }
 
 .info-box {
@@ -457,22 +459,16 @@ body {
 /* Section Conditions financières */
 .financial-conditions {
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
   padding: 15px;
-  background-color: #f9f9f9;
-  border: 1px solid #333;
-  border-radius: 8px;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+  border-radius: 0; /* Suppression des coins arrondis */
   overflow: hidden;
   text-align: left;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin: auto;
   width: 945px;
-  background-color: #eff3ff;
-}
-
-.financial-conditions h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #333;
 }
 
 .financial-conditions ul {
@@ -482,7 +478,7 @@ body {
 }
 
 .financial-conditions li {
-  font-size: 14px;
+  font-size: 18px;
   color: #555;
   margin: 5px 0;
 }
