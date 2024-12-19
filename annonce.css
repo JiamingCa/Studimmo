@@ -487,15 +487,6 @@ body {
   color: #333;
 }
 
-/* Style des prix dans la boîte info */
-.info-box .price {
-  font-size: 20px;
-  font-weight: bold;
-  color: #007bff;
-  margin-top: 10px;
-}
-
-
 .carousel {
   width: 15vw;
   height: 15vh;
