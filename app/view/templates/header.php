@@ -14,7 +14,7 @@
         <div class="profile-icons" id="profileIcons" style="display: flex; gap: 10px;">
             <a href='index.php?page=favoris'><i  class="bi bi-heart"></i></a>
             <a href='index.php?page=messagerie' ><i class="bi bi-chat"></i></a>
-            <a href='index.php?page=alert'><i  class="bi bi-bell"></i></a>
+            <a href='index.php?page=alertes'><i  class="bi bi-bell"></i></a>
         </div>
         <div class="profile-dropdown" id="profileDropdown" style="display: none; position: absolute; top: 80px; right: 0; background: #ffffff; border-radius: 10px; box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); z-index: 1000; overflow: hidden;">
             <a href='index.php?page=mon_espace' class="dropdown-item">

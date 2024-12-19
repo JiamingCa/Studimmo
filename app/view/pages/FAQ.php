@@ -5,13 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ Dynamique</title>
     <link rel="stylesheet" href="app/view/asset/css/FAQ.css">
+    <link rel="stylesheet" href="app/view/asset/css/template.css">
     <link rel="stylesheet" href="app/view/asset/css/footer.css">
     <link rel="stylesheet" href="app/view/asset/css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
 </head>
 
 <body>
     <?php include 'app/view/templates/header.php'; ?>
+    <div class="titre">
+        <a href='index.php?page=mon_espace' class="back-button">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <t1>Retrouvez ci-dessous toutes les informations utiles</t1>
+    </div>
     <div class="faq-container">
         
         <div class="faq-item">

@@ -23,57 +23,100 @@ if (isset($_SESSION['id_Utilisateur'])) {
 
 
 // Vérification des paramètres dans l'URL (route)
-$page = isset($_GET['page']) ? $_GET['page'] : 'Creer_dossier'; // Par défaut, "accueil"
+$page = isset($_GET['page']) ? $_GET['page'] : 'favoris'; // Par défaut, "accueil"
 
 // Charger le contrôleur correspondant
 switch ($page) {
     case 'mon_espace':
-        require_once 'app/controllers/MonEspaceController.php';
-        $controller = new MonEspaceController($pdo);
-        $controller->afficherMonEspace($userId);
+        if (!isset($_SESSION['id_Utilisateur'])) {
+            $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // URL actuelle
+            header("Location: index.php?page=Connexion");
+            exit();
+        
+        }else {
+            require_once 'app/controllers/MonEspaceController.php';
+            $controller = new MonEspaceController($pdo);
+            $controller->afficherMonEspace($userId);
+        }
         break;
 
     case 'favoris':
-        require_once 'app/controllers/FavorisController.php';
-        $controller = new FavorisController($pdo);
-        $controller->afficherFavoris($userId);
+        if (!isset($_SESSION['id_Utilisateur'])) {
+            $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // URL actuelle
+            header("Location: index.php?page=Connexion");
+            exit();
+        }else {
+            require_once 'app/controllers/FavorisController.php';
+            $controller = new FavorisController($pdo);
+            $controller->afficherFavoris($userId);
+        }
         break;
     
     case 'tb_bord':
-        require_once 'app/controllers/DashboardController.php';
-        $controller = new DashboardController($pdo);
-        $controller->afficherTableauDeBord($userId);
+        if (!isset($_SESSION['id_Utilisateur'])) {
+            $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // URL actuelle
+            header("Location: index.php?page=Connexion");
+            exit();
+        }else {
+            require_once 'app/controllers/DashboardController.php';
+            $controller = new DashboardController($pdo);
+            $controller->afficherTableauDeBord($userId);
+        }
         break;
 
     case 'alertes':
-        require_once 'app/controllers/AlertesController.php';
-        $controller = new AlertesController($pdo);
-        $controller->afficherAlertes($userId);
+        if (!isset($_SESSION['id_Utilisateur'])) {
+            $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // URL actuelle
+            header("Location: index.php?page=Connexion");
+            exit();
+        }else {
+            require_once 'app/controllers/AlertesController.php';
+            $controller = new AlertesController($pdo);
+            $controller->afficherAlertes($userId);
+        }
         break;
 
-    case 'Creer_dossier':
-        require_once 'app/controllers/Creer_dossierController.php';
-        $controller = new Creer_dossierController($pdo);
-        $controller->afficherCreer_dossier($userId);
+    case 'creer_dossier':
+        if (!isset($_SESSION['id_Utilisateur'])) {
+            $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // URL actuelle
+            header("Location: index.php?page=Connexion");
+            exit();
+        }else {
+            require_once 'app/controllers/Creer_dossierController.php';
+            $controller = new Creer_dossierController($pdo);
+            $controller->afficherCreer_dossier($userId);
+        }
         break;
 
     case 'traiter_fichiers':
-        require_once 'app/controllers/Creer_dossierController.php';
-        $controller = new Creer_dossierController($pdo);
-        $controller->traiterFichiers($userId);
+        if (!isset($_SESSION['id_Utilisateur'])) {
+            $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // URL actuelle
+            header("Location: index.php?page=Connexion");
+            exit();
+        }else {
+            require_once 'app/controllers/Creer_dossierController.php';
+            $controller = new Creer_dossierController($pdo);
+            $controller->traiterFichiers($userId);
+        }
         break;
     
     
     case 'mon_dossier':
-        require_once 'app/controllers/MonDossierController.php';
-        $controller = new MonDossierController($pdo);
-        $controller->afficherMonDossier($userId);
+        if (!isset($_SESSION['id_Utilisateur'])) {
+            $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // URL actuelle
+            header("Location: index.php?page=Connexion");
+            exit();
+        }else {
+            require_once 'app/controllers/MonDossierController.php';
+            $controller = new MonDossierController($pdo);
+            $controller->afficherMonDossier($userId);
+        }
         break;
 
     case 'Faq':
         require_once 'app/controllers/FaqController.php';
         $controller = new FaqController($pdo);
-        $controller->FaqMonEspace($userId);
+        $controller->afficherFaq();
         break;
 
     case 'Connexion':
@@ -92,10 +135,17 @@ switch ($page) {
         require_once 'app/controllers/InscriptionController.php';
         $controller = new InscriptionController($pdo);
         $controller->afficherInscription();
+        
         break;
 
     case 'GererUtilisateur':
-        require_once 'app/controllers/GererUtilisateurController.php';
+        if (!isset($_SESSION['id_Utilisateur'])) {
+            $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI']; // URL actuelle
+            header("Location: index.php?page=Connexion");
+            exit();
+        }else {
+            require_once 'app/controllers/GererUtilisateurController.php';
+        }
         break;
 
     case 'homepage':

@@ -1,56 +1,84 @@
-/* styles.css */
+/* Mise à jour du style pour une FAQ épurée et moderne */
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
-    background-color: #f9f9f9;
+    padding: 0;
+    background-color: #ffffff;
+    color: #000000;
+    line-height: 1.6;
 }
 
 .faq-container {
-    max-width: 600px;
+    max-width: 100%; /* Occupe tout l'espace */
+    padding: 40px;
     margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .faq-item {
-    margin-bottom: 20px;
-    border: 1px solid #dddddd;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: #fff;
+    margin-bottom: 30px;
+    border: 1px solid #AFC1FF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.faq-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
 
-
-
-
-/* Style de la question avec flexbox */
 .faq-question {
-    display: flex; /* Utilisation de flexbox */
-    justify-content: space-between; /* Sépare la question et l'icône */
-    align-items: center; /* Aligne verticalement au centre */
-    cursor: pointer; /* Ajoute un curseur pour indiquer que c'est cliquable */
-    padding: 10px 15px;
-    background-color: #f1f1f1;
-    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px;
+    color: #000000;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
-/* Icône */
+.faq-question:hover {
+    background-color: #F7F9FF;
+}
+
 .faq-question i {
-    font-size: 1.2rem; /* Taille de l'icône */
-    color: #007BFF; /* Couleur de l'icône */
-    transition: transform 0.3s ease; /* Transition pour l'animation */
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
 }
 
-/* Rotation de l'icône lorsqu'elle est ouverte */
 .faq-question.open i {
-    transform: rotate(180deg); /* Rotation vers le haut */
+    transform: rotate(180deg);
 }
 
-/* Réponse (masquée par défaut) */
 .faq-answer {
     display: none;
-    padding: 10px 15px;
-    border-left: 3px solid #007bffdf;
-    background: #f9f9f9;
-    margin-top: 5px;
-    border-radius: 5px;
+    padding: 20px;
+    background-color: #F7F9FF;
+    border-left: 5px solid #AFC1FF;
+    font-size: 1rem;
+    color: #333333;
+    line-height: 1.5;
+}
+
+/* Transition pour afficher la réponse */
+.faq-answer.show {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

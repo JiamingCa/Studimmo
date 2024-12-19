@@ -66,7 +66,16 @@
                 <?php include 'app/view/templates/popup_contacter.php'; ?>
             <?php endforeach; ?>
         <?php else: ?>
-            <p>Aucune annonce trouvée dans vos favoris.</p>
+            <div class="favorites-empty">
+                <div class="animation-container">
+                    <div class="house">
+                        <i class="bi bi-heartbreak-fill" style="font-size: 80px; color: #ff4545"></i>
+                    </div>
+                </div>
+                <p class="empty-text">Vous n'avez encore aucun favori.</p>
+                <button class="search-button" onclick="window.location.href='index.php?page=recherche_logement'">Trouver un logement</button>
+            </div>
+            
         <?php endif; ?>
         </div>
 

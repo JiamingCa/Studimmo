@@ -34,7 +34,7 @@
             </div>
 
             <!-- Carte Mon profil -->
-            <div class="card" onclick="location.href='index.php?page=candidature';">
+            <div class="card" onclick="location.href='index.php?page=mon_dossier';">
                 <i class="fas fa-folder icon"></i>
                 <h2>Candidature</h2>
                 <p>Compléter votre profil</p>

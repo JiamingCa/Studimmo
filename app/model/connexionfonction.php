@@ -28,7 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userId = $_SESSION['id_Utilisateur'] ;
             
             // Redirige vers une page sécurisée
-            header('Location: index.php?page=mon_espace');
+            $redirectUrl = isset($_GET['redirect_url']) ? $_GET['redirect_url'] : 'index.php';
+            header("Location: " . $redirectUrl);
             exit;
         } else {
             die('Identifiants incorrects.');

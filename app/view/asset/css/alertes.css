@@ -81,3 +81,54 @@ body {
 .toggle-btn:hover {
     opacity: 0.9;
 }
+
+
+.alerts-empty {
+    text-align: center;
+    margin-top: 50px;
+    padding: 115px;
+}
+
+.animation-container {
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+.bell {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+
+
+.empty-text {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.create-alert-button {
+    background-color: #1E90FF;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-alert-button:hover {
+    background-color: #4682B4;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
