@@ -5,9 +5,8 @@ session_start();
 // Inclure les fichiers de configuration et les dépendances
 require_once 'config/connexion.php';
 
-
-
 // Simulation d'un utilisateur connecté (utilisateur avec id = 1)
+
 
 // if (!isset($_SESSION['user_id'])) {
 //     $_SESSION['user_id'] = 1; // Remplacez "1" par l'id réel d'un utilisateur dans votre base de données
@@ -19,6 +18,7 @@ echo "<script>const userLoggedIn = " . json_encode($userLoggedIn) . ";</script>"
 if (isset($_SESSION['id_Utilisateur'])) {
     $userId = $_SESSION['id_Utilisateur']; // Récupère l'ID utilisateur depuis la session
 }
+
 
 
 
@@ -112,6 +112,25 @@ switch ($page) {
             $controller->afficherMonDossier($userId);
         }
         break;
+    
+    
+
+    case 'profils':
+        require_once 'app/controllers/ProfilsController.php';
+        $controller = new ProfilsController($pdo);
+    
+        // Vérifiez si une action spécifique est demandée
+        $action = isset($_GET['action']) ? $_GET['action'] : 'afficher';
+    
+        if ($action === 'modifier') {
+            $controller->modifierProfils($userId);
+        } elseif ($action === 'modifier_securite') {
+            $controller->modifierSecurite($userId); // Appeler la méthode pour modifier la sécurité
+        } else {
+            $controller->afficherProfils($userId);
+        }
+        break;
+        
 
     case 'Faq':
         require_once 'app/controllers/FaqController.php';
