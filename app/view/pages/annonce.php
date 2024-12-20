@@ -60,13 +60,13 @@
             <img src="app/view/asset/image/annonce1/image3.png" alt="Nature Image #3">
           </li>
           <li class="slide">
-            <img src="app/view/asset/image/annonce1/image4.png" alt="Nature Image #3">
+            <img src="app/view/asset/image/annonce1/image4.png" alt="Nature Image #4">
           </li>
           <li class="slide">
-            <img src="app/view/asset/image/annonce1/image5.png" alt="Nature Image #3">
+            <img src="app/view/asset/image/annonce1/image5.png" alt="Nature Image #5">
           </li>
           <li class="slide">
-            <img src="app/view/asset/image/annonce1/image6.png" alt="Nature Image #3">
+            <img src="app/view/asset/image/annonce1/image6.png" alt="Nature Image #6">
           </li>
         </ul>
       </div>

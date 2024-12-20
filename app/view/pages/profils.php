@@ -39,10 +39,7 @@
                     <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($utilisateur['nom']); ?>" disabled> <br><br>
                 </div>
 
-                <div class="profile-item">
-                    <label for="type">Type</label>
-                    <input type="text" id="type" name="type" value="<?php echo htmlspecialchars($utilisateur['type']); ?>" disabled> <br><br>
-                </div>
+                
 
                 <div class="profile-item">
                     <label for="telephone">Numéro de téléphone</label>
