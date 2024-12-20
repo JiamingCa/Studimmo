@@ -1,5 +1,5 @@
 <header>
-    <a href="index.php?page=homepage" class="logo-link">
+    <a href="index.php?page=Accueil" class="logo-link">
         <img src="app/view/asset/image/Logo_studimo.png" alt="Logo de STUDIMMO" class="logo">
     </a>
     <nav class="nav-menu">

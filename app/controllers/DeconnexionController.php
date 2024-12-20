@@ -11,7 +11,7 @@ class DeconnexionController {
         session_destroy();
 
         // Redirige vers la page de connexion ou d'accueil
-        header('Location: index.php?page=homepage'); // Remplacez `login.php` par la page souhaitée
+        header('Location: index.php?page=Accueil'); // Remplacez `login.php` par la page souhaitée
         exit;
     }
 }

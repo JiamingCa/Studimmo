@@ -23,7 +23,7 @@ if (isset($_SESSION['id_Utilisateur'])) {
 
 
 // Vérification des paramètres dans l'URL (route)
-$page = isset($_GET['page']) ? $_GET['page'] : 'homepage'; // Par défaut, "accueil"
+$page = isset($_GET['page']) ? $_GET['page'] : 'Accueil'; // Par défaut, "accueil"
 
 // Charger le contrôleur correspondant
 switch ($page) {
@@ -168,13 +168,22 @@ switch ($page) {
         }
         break;
 
-    case 'homepage':
-        require_once 'app/controllers/HomepageController.php';
-        $controller = new HomepageController($pdo);
-        $controller->afficherHomePage();
+    case 'Accueil':
+        $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
+        require_once 'app/controllers/AccueilController.php';
+        $controller = new AccueilController($pdo);
+        $controller->afficherAccueil();
+        break;
+        
+    case 'PRL':
+        $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
+        require_once 'app/controllers/PRLController.php';
+        $controller = new PRLController($pdo);
+        $controller->afficherPRL();
         break;
         
     case 'annonce':
+        $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
         require_once 'app/controllers/AnnonceController.php';
         $controller = new AnnonceController($pdo);
         $controller->afficherAnnonce();

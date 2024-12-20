@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
     
             // Sinon, redirige vers une URL par défaut
-            $redirectUrl = isset($_GET['redirect_url']) ? $_GET['redirect_url'] : 'index.php?page=homepage';
+            $redirectUrl = isset($_GET['redirect_url']) ? $_GET['redirect_url'] : 'index.php?page=Accueil';
             header("Location: $redirectUrl");
             exit();
         } else {

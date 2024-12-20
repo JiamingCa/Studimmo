@@ -3,7 +3,7 @@
     <!-- Top Section -->
     <div class="top-footer">
       <div class="logo">
-      <a href= "index.php?page=homepage"> <img   src="app/view/asset/image/Logo_studimo.png" alt="Logo"></a>
+      <a href= "index.php?page=Accueil"> <img   src="app/view/asset/image/Logo_studimo.png" alt="Logo"></a>
       </div>
       <div class="socials">
         <p>Retrouvez-nous sur ...</p>
