@@ -24,7 +24,9 @@
     <p>Trouvez rapidement des milliers d'annonces de logements pour étudiants.</p>
     <div class="search-container">
       <!-- Formulaire de recherche action="PRL.php" -->
-      <form  method="GET">
+      <form  action="index.php" method="GET">
+        <!-- Champ caché pour inclure "page=PRL" dans l'URL -->
+        <input type="hidden" name="page" value="PRL">
         <input type="text" id="searchInput" name="location" placeholder="Recherchez par ville, code postal ou département" required>
         <button type="submit" id="searchButton">Rechercher</button>
       </form>
