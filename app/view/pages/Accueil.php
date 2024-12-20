@@ -16,21 +16,23 @@
 
 <div class ="slider-container">
   <section class="hero">
-    <div class="slider">
-      <img src="app/view/asset/image/Paris.png" alt="Paris">
-      <img src="app/view/asset/image/Lyon.png" alt="Lyon">
+    <div id="diaporama" class="slider">
+      <img src="app/view/asset/image/Paris.png" alt="Image 1" >
+      <img src="app/view/asset/image/Lyon.png" alt="Image 2">
     </div>
-    <h1>Votre clé pour un logement étudiant idéal</h1>
-    <p>Trouvez rapidement des milliers d'annonces de logements pour étudiants.</p>
-    <div class="search-container">
-      <!-- Formulaire de recherche action="PRL.php" -->
-      <form  action="index.php" method="GET">
-        <!-- Champ caché pour inclure "page=PRL" dans l'URL -->
-        <input type="hidden" name="page" value="PRL">
-        <input type="text" id="searchInput" name="location" placeholder="Recherchez par ville, code postal ou département" required>
-        <button type="submit" id="searchButton">Rechercher</button>
-      </form>
-      <ul id="searchSuggestions" class="suggestions-list"></ul>
+    <div class ="titre-recherche-container">
+      <h1>Votre clé pour un logement étudiant idéal</h1>
+      <p>Trouvez rapidement des milliers d'annonces de logements pour étudiants.</p>
+      <div class="search-container">
+        <!-- Formulaire de recherche action="PRL.php" -->
+        <form  action="index.php" method="GET">
+          <!-- Champ caché pour inclure "page=PRL" dans l'URL -->
+          <input type="hidden" name="page" value="PRL">
+          <input type="text" id="searchInput" name="location" placeholder="Recherchez par ville, code postal ou département" required>
+          <button type="submit" id="searchButton">Rechercher</button>
+        </form>
+        <ul id="searchSuggestions" class="suggestions-list"></ul>
+      </div>
     </div>
   </section>
 </div>
@@ -53,10 +55,7 @@
     </div>
   </section>
 
-  <section class="cta">
-    <h2>Prêt à trouver votre logement ?</h2>
-    <button>Commencez votre recherche</button>
-  </section>
+  
 
   <?php include 'app/view/templates/footer.php'; ?>
   <script src="app/view/asset/js/Accueil.js"></script>

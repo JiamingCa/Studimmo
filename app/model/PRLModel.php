@@ -12,7 +12,7 @@ class PRLModel {
                 FROM annonce a
                 LEFT JOIN galerie g ON a.id_annonce = g.annonce_id
                 LEFT JOIN photo p ON g.id_galerie = p.galerie_id
-                Where 1=1";
+                WHERE 1=1";
                 
 
         if (!empty($filters['location'])) {
@@ -33,7 +33,7 @@ class PRLModel {
         if (!empty($filters['budgetMax'])) {
             $sql .= " AND `prix` <= :budgetMax";
         }
-
+        $sql .= " GROUP BY a.id_annonce";
         $stmt = $this->pdo->prepare($sql);
 
         if (!empty($filters['location'])) {

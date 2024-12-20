@@ -89,20 +89,31 @@
 
     <section class="result-container">
       <h2>Biens trouvés</h2>
-      <?php foreach ($logements as $logement): ?>
-            <div class='property-card' onclick="location.href='index.php?page=annonce';" >
-                <div class='image-container'>
-                    <img src='<?= htmlspecialchars($logement['photo_path'] ?? 'app/view/asset/img/default.png') ?>' alt='Photo de la propriété'>
-                </div>
-                <div class='property-info'>
-                    <h3><?= htmlspecialchars($logement['titre']) ?> - <?= htmlspecialchars($logement['localisation']) ?></h3>
-                    <p>Surface : <?= htmlspecialchars($logement['surface']) ?> m²</p>
-                    <p>Prix : <?= htmlspecialchars($logement['prix']) ?> €</p>
-                    <p>Description : <?= htmlspecialchars($logement['description']) ?></p>
-                    <a class='details-button'>Voir les détails</a>
-                </div>
-            </div>
-        <?php endforeach; ?>
+      <?php if (!empty($logements)): ?>
+        <?php foreach ($logements as $logement): ?>
+              <div class='property-card' onclick="location.href='index.php?page=annonce';" >
+                  <div class='image-container'>
+                      <img src='<?= htmlspecialchars($logement['photo_path'] ?? 'app/view/asset/img/default.png') ?>' alt='Photo de la propriété'>
+                  </div>
+                  <div class='property-info'>
+                      <h3><?= htmlspecialchars($logement['titre']) ?> - <?= htmlspecialchars($logement['localisation']) ?></h3>
+                      <p>Surface : <?= htmlspecialchars($logement['surface']) ?> m²</p>
+                      <p>Prix : <?= htmlspecialchars($logement['prix']) ?> €</p>
+                      <p>Description : <?= htmlspecialchars($logement['description']) ?></p>
+                      <a class='details-button'>Voir les détails</a>
+                  </div>
+              </div>
+          <?php endforeach; ?>
+      <?php else: ?>
+        <div class="annonces-empty">
+          <div class="animation-container">
+              <i class="bi bi-house-x"></i>
+          </div>
+          <p class="empty-text">Aucun logement disponible pour le moment.</p>
+          <button class="create-annonce-button" onclick="window.location.href='index.php?page=creer_annonce'">Créer une annonce</button>
+      </div>
+      <?php endif; ?>
+        
       
     </section>
   </main>

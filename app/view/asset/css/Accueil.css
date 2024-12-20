@@ -114,49 +114,54 @@ header {
     color: white;
     background-size: cover;
     background-position: center;
-    position: relative;
-    overflow: hidden;
     animation: slideBackground 10s infinite linear;
     z-index: 1;
 }
 
 .slider {
     display: flex;
-    z-index: -1;
-}
-
-.slider img {
-    width: 1200px;
-    animation-duration: 10s;
-    animation-name: slider;
-    animation-iteration-count: infinite;
-    z-index: -1;
-}
-
-.slider-container {
-    display: flex;
-    overflow: auto;
-    width: 55%;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    height: 75%;
-}
-
-@keyframes slider {
+    position: absolute;
+    width: 200%;
+    height: -webkit-fill-available;
+    justify-content: flex-start;
+    animation: slider 10s infinite;
+    
+  }
+  
+  .slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .slider img:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  .slider img:nth-child(2) {
+    animation-delay: 10s; /* Ajusté en fonction de la durée totale */
+  }
+  
+  @keyframes slider {
     0% {
-        transform: translateX(0);
+      transform: translateX(0%); /* Montre la première image */
+    }
+    25% {
+      transform: translateX(0%); /* Reste sur la première image */
     }
     50% {
-        transform: translateX(-1200px);
+      transform: translateX(-50%); /* Passe à la deuxième image */
+    }
+    75% {
+      transform: translateX(-50%); /* Reste sur la deuxième image */
     }
     100% {
-        transform: translateX(0);
+      transform: translateX(0%); /* Retour à la première image */
     }
-}
+  }
+  
 
 .hero::after {
-    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -165,22 +170,29 @@ header {
     z-index: 1;
 }
 
+.hero .titre-recherche-container {
+    display: flex;
+    position: relative;
+    margin: auto;
+    flex-direction: column;
+}
+
 .hero h1 {
     z-index: 2;
-    position: relative;
+    
     font-size: 3rem;
-    margin: 0;
+    margin-top: 200px;
 }
 
 .hero p {
     z-index: 2;
-    position: relative;
+    
     margin: 1rem 0 2rem;
 }
 
 .hero .search-container {
     z-index: 300;
-    position: relative;
+    
     display: flex;
     justify-content: center;
     margin-bottom: 100px;
@@ -205,7 +217,7 @@ header {
 }
 
 .hero button:hover {
-    background-color: #e8c43c;
+    background-color: #5774cc;
 }
 
 /* Features Section */
@@ -232,33 +244,6 @@ header {
     margin-bottom: 0.5rem;
 }
 
-/* Call-to-Action Section */
-.cta {
-    text-align: center;
-    padding: 2rem 1rem;
-    background: #fff;
-    color: white;
-}
-
-.cta h2 {
-    margin-bottom: 1rem;
-}
-
-.cta button {
-    padding: 1rem 2rem;
-    background-color: white;
-    color: #007AFF;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.cta button:hover {
-    background-color: #f0f0f0;
-}
 
 /* Footer */
 footer {
