@@ -21,30 +21,42 @@
         <t1>Mes Alertes</t1>
     </div>
     <div class="alertes-container">
-        <?php foreach ($alertes as $alerte): ?>
-            <div class="alerte-item" id="alerte-<?= $alerte['id_alerte'] ?>">
-                <div class="alerte-header">
-                    <h2>Mon futur bien à : <?= htmlspecialchars($alerte['localisation']) ?></h2>
-                    <button class="delete-btn" onclick="supprimerAlerte(<?= $alerte['id_alerte'] ?>)">
-                        <i class="bi bi-trash3" alt="Supprimer"></i>  
-                    </button>
+        <?php if (!empty($alertes)): ?>
+            <?php foreach ($alertes as $alerte): ?>
+                <div class="alerte-item" id="alerte-<?= $alerte['id_alerte'] ?>">
+                    <div class="alerte-header">
+                        <h2>Mon futur bien à : <?= htmlspecialchars($alerte['localisation']) ?></h2>
+                        <button class="delete-btn" onclick="supprimerAlerte(<?= $alerte['id_alerte'] ?>)">
+                            <i class="bi bi-trash3" alt="Supprimer"></i>  
+                        </button>
+                    </div>
+                    <div class="alerte-tags">
+                        <span><?= htmlspecialchars($alerte['type']) ?></span>
+                        <span><?= htmlspecialchars($alerte['prix']) ?> €</span>
+                        <span><?= htmlspecialchars($alerte['surface']) ?> m²</span>
+                        <span><?= htmlspecialchars($alerte['localisation']) ?></span>
+                        <span>...</span>
+                    </div>
+                    <div class="alerte-details">
+                        <p>E-mail</p>
+                        <button class="toggle-btn" onclick="toggleAlerte(<?= $alerte['id_alerte'] ?>, <?= $alerte['etat'] ? 0 : 1 ?>)">
+                            <?= $alerte['etat'] ? 'Désactivée' : 'Activée' ?>
+                        </button>
+                    </div>
                 </div>
-                <div class="alerte-tags">
-                    <span><?= htmlspecialchars($alerte['type']) ?></span>
-                    <span><?= htmlspecialchars($alerte['prix']) ?> €</span>
-                    <span><?= htmlspecialchars($alerte['surface']) ?> m²</span>
-                    <span><?= htmlspecialchars($alerte['localisation']) ?></span>
-                    <span>...</span>
-                </div>
-                <div class="alerte-details">
-                    <p>E-mail</p>
-                    <button class="toggle-btn" onclick="toggleAlerte(<?= $alerte['id_alerte'] ?>, <?= $alerte['etat'] ? 0 : 1 ?>)">
-                        <?= $alerte['etat'] ? 'Désactivée' : 'Activée' ?>
-                    </button>
-                </div>
-            </div>
 
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="alerts-empty">
+                <div class="animation-container">
+                    <div class="bell">
+                        <i class="bi bi-bell-fill" style="font-size: 80px"></i>
+                    </div>
+                </div>
+                <p class="empty-text">Vous n'avez encore aucune alerte.</p>
+                <button class="create-alert-button" onclick="window.location.href='index.php?page=creer_alerte'">Créer une alerte</button>
+            </div>
+        <?php endif; ?>
     </div>
     <script>
         function toggleAlerte(id, isActive) {

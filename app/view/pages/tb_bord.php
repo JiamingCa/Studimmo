@@ -119,7 +119,13 @@
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p>Aucune annonce trouvée.</p>
+                <div class="annonces-empty">
+                    <div class="animation-container">
+                        <i class="bi bi-house-x"></i>
+                    </div>
+                    <p class="empty-text">Vous n'avez encore ajouté aucune annonce.</p>
+                    <button class="create-annonce-button" onclick="window.location.href='index.php?page=creer_annonce'">Créer une annonce</button>
+                </div>
             <?php endif; ?>
         </div>
     </div>

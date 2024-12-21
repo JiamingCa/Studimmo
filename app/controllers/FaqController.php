@@ -1,7 +1,7 @@
 <?php
 // app/controllers/MonEspaceController.php
 class FaqController {
-    public function FaqMonEspace() {
+    public function afficherFaq() {
         
 
         // Inclure la vue

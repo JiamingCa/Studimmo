@@ -1,7 +1,5 @@
 <?php
 require 'app/model/inscriptionfonction.php';
-require 'app/model/registerUser.php';
-require 'app/model/validateVerification.php';
 // app/controllers/MonEspaceController.php
 class InscriptionController {
     

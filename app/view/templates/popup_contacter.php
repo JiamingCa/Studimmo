@@ -76,15 +76,21 @@
                             <p>Les trois derniers (si applicable).</p>
                         </div>
                     </li>
-               <!-- <li>
-                        <i class="fas fa-user-shield"></i>
-                        <div>
-                            <strong>Documents du garant</strong>
-                            <p>Identité, RIB, bulletins de salaire, etc.</p>
-                        </div>
-                    </li> -->
                 </ul>
-                <button class="btn-dossier" onclick="location.href='creer_dossier.php'">
+                <?php
+                
+                if (!isset($_SESSION['id_Utilisateur'])) {
+                    unset($_SESSION['redirect_url']);
+                    $_SESSION['redirect_url'] = $_SERVER['REQUEST_URI'];
+                    // Redirige vers la page de connexion si l'utilisateur n'est pas connecté
+                    $url = 'index.php?page=Connexion';
+                } else {
+                    // Redirige vers la page "créer_dossier" si l'utilisateur est connecté
+                    $url = 'index.php?page=creer_dossier';
+                }
+                ?>
+
+                <button class="btn-dossier" onclick="location.href='<?php echo $url; ?>'">
                     Créer mon dossier
                 </button>
             </div>

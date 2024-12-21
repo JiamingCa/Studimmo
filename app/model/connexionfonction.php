@@ -26,10 +26,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
             $_SESSION['id_Utilisateur'] = $utilisateur['id_Utilisateur'];
             $userId = $_SESSION['id_Utilisateur'] ;
-            
-            // Redirige vers une page sécurisée
-            header('Location: index.php?page=mon_espace');
-            exit;
+            if (isset($_SESSION['redirect_url'])) {
+                $redirectUrl = $_SESSION['redirect_url'];
+                unset($_SESSION['redirect_url']); // Nettoie la variable de session
+                header("Location: $redirectUrl");
+                exit();
+            }
+    
+            // Sinon, redirige vers une URL par défaut
+            $redirectUrl = isset($_GET['redirect_url']) ? $_GET['redirect_url'] : 'index.php?page=Accueil';
+            header("Location: $redirectUrl");
+            exit();
         } else {
             die('Identifiants incorrects.');
         }
